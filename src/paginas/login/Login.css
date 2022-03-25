@@ -1,0 +1,13 @@
+.text-decorator-none{
+    text-decoration: none;
+}
+
+.button-logar{
+    color: #ffffff !important;
+    background-color: #00A3C0 !important;
+}
+
+.button-logar:hover{
+    font-weight: bold !important;
+}
+
