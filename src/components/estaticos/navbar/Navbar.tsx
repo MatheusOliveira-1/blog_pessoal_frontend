@@ -8,24 +8,24 @@ function Navbar() {
         <>
             <AppBar position="static" style={{backgroundColor: "#1C1C1C", color: "#00A3C0"}}>
                 <Toolbar variant="dense">
-                    <Box style={{ cursor: "pointer" }} >
+                    <Box className="cursor" >
                         <Typography variant="h5" color="inherit">
                             Blog Pessoal
                         </Typography>
                     </Box>
 
                     <Box display="flex" justifyContent="start">
-                        <Box mx={1} style={{ cursor: "pointer" }}>
+                        <Box mx={1} className="cursor">
                             <Typography variant="h6" color="inherit">
                                 Home
                             </Typography>
                         </Box>
-                        <Box mx={1} style={{ cursor: "pointer" }}>
+                        <Box mx={1} className="cursor">
                             <Typography variant="h6" color="inherit">
                                 Postagens
                             </Typography>
                         </Box>
-                        <Box mx={1} style={{ cursor: "pointer" }}>
+                        <Box mx={1} className="cursor">
                             <Typography variant="h6" color="inherit">
                                 Temas
                             </Typography>
@@ -36,7 +36,7 @@ function Navbar() {
                             </Typography>
                         </Box>
                         <Link to='/login' className='text-decorator-none'>
-                        <Box mx={1} style={{ cursor: "pointer", color: '#00A3C0' }}>
+                        <Box mx={1} className="cursor">
                             <Typography variant="h6" color="inherit">
                                 Logout
                             </Typography>

@@ -1,3 +1,16 @@
+.textos{
+    font-weight: bold;
+}
+
+.imagem{
+    background-image: url(https://i.imgur.com/mU1WfVM.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: #00A3C0;
+    min-height: calc(100vh - 120px - 108px);
+    width: calc(100vh - 120px - 48px);
+}
 .text-decorator-none{
     text-decoration: none;
 }

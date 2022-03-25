@@ -14,7 +14,7 @@ function Login() {
                       gutterBottom 
                       color="textPrimary" 
                       component='h3' align='center' 
-                      style={{fontWeight: 'bold'}}>
+                      className="textos">
                           Entrar
                         </Typography>
                         <TextField 
@@ -55,22 +55,13 @@ function Login() {
                       variant="subtitle1" 
                       gutterBottom 
                       align='center'
-                      style={{fontWeight:'bold'}}>
+                      className="textos">
                           Cadastre-se
                         </Typography>
                   </Box>
               </Box>
           </Grid>
-          <Grid xs={6} style={{
-              backgroundImage: `url(https://i.imgur.com/mU1WfVM.jpg)`,
-              backgroundRepeat: 'no-repeat', 
-              width: 'calc(100vh - 120px - 48px)',
-              minHeight: 'calc(100vh - 120px - 108px)',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundColor: '00A3C0',
-          }}>
-              
+          <Grid xs={6} className='imagem'>    
           </Grid>
       </Grid>
   )
