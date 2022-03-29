@@ -1,8 +1,8 @@
 import { Box, Button, Grid, TextField, Typography } from "@material-ui/core";
-import React, {ChangeEvent, useState} from "react";
+import React, {ChangeEvent, useEffect, useState} from "react";
 import { Link, useHistory } from "react-router-dom";
 import useLocalStorage from "react-use-localstorage";
-import { api } from "../../services/Service";
+import { login } from "../../services/Service";
 import UserLogin from "../../models/UserLogin";
 import './Login.css';
 
@@ -27,16 +27,21 @@ function Login() {
         })
     }
 
+    useEffect(() => {
+        if(token != ''){
+            history.push('/home')
+        }
+    }, [token])
+
     async function onSubmit(e: ChangeEvent<HTMLFormElement>){
         e.preventDefault();
 
         try{
-            const resposta = await api.post(`usuarios/logar`, userLogin)
-            setToken(resposta.data.token )
+            await login(`usuarios/logar`, userLogin, setToken)
             
             alert('Usuário logado com sucesso!!!')
-        }catch{
-
+        }catch(error){
+            alert('Os dados do usuário estão inconsistentes. Erro ao logar.');
         }
     }
 
