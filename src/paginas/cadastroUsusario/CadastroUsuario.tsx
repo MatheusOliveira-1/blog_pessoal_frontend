@@ -10,6 +10,8 @@ function CadastroUsuario() {
 
     let history = useHistory();
     const [confirmarSenha,setConfirmarSenha] = useState<String>("")
+
+    /*Atualiza a partir do que o usuario está digitando*/
     const [user, setUser] = useState<User>(
         {
             id: 0,
@@ -18,7 +20,8 @@ function CadastroUsuario() {
             senha: '',
             foto:''
         })
-
+    
+    /*Atualiza a partir da resposta do back-end*/
     const [userResult, setUserResult] = useState<User>(
         {
             id: 0,
@@ -32,26 +35,29 @@ function CadastroUsuario() {
         if (userResult.id != 0) {
             history.push("/login")
         }
-    }, [userResult])
+    }, [userResult])/*Este array dispara a função toda vez que o userResult é alterado*/
 
-
-    function confirmarSenhaHandle(e: ChangeEvent<HTMLInputElement>){
-        setConfirmarSenha(e.target.value)
-    }
-
-
+    
+    /*Atualiza o estado do setUser a partir do que está sendo digitado*/
     function updatedModel(e: ChangeEvent<HTMLInputElement>) {
-
+        
         setUser({
             ...user,
             [e.target.name]: e.target.value
         })
-
+        
     }
-    async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
+
+    /**Atualiza o estado do confirmarSenha a partir do que foi digitado*/
+    function confirmarSenhaHandle(e: ChangeEvent<HTMLInputElement>){
+        setConfirmarSenha(e.target.value)
+    }
+
+    /**Realiza o cadastro do usuário fazendo a comparação das senhas dentro do if */
+    async function cadastrar(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
-        if(confirmarSenha == user.senha){
-        cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
+        if(confirmarSenha === user.senha && user.senha.length >= 8){
+        await cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
         alert('Usuario cadastrado com sucesso')
         }else{
             alert('Dados inconsistentes. Favor verificar as informações de cadastro.')
@@ -63,7 +69,7 @@ function CadastroUsuario() {
             <Grid xs={6} className='imagem2'></Grid>
             <Grid xs={6} alignItems='center'>
                 <Box padding={10}>
-                    <form onSubmit={onSubmit}>
+                    <form onSubmit={cadastrar}>
                         <Typography variant='h3'
                             gutterBottom
                             color="textPrimary"
@@ -71,6 +77,7 @@ function CadastroUsuario() {
                             className="textos">
                             Cadastrar
                         </Typography>
+
                         <TextField
                             value={user.nome}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
@@ -79,6 +86,7 @@ function CadastroUsuario() {
                             variant='outlined'
                             name='nome'
                             margin="normal"
+                            required
                             fullWidth>
                         </TextField>
 
@@ -90,6 +98,19 @@ function CadastroUsuario() {
                             variant='outlined'
                             name='usuario'
                             margin='normal'
+                            type = 'email'
+                            required
+                            fullWidth>
+                        </TextField>
+             
+                        <TextField
+                            value={user.foto}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
+                            id='foto'
+                            label='foto'
+                            variant='outlined'
+                            name='foto'
+                            margin="normal"
                             fullWidth>
                         </TextField>
 
@@ -102,6 +123,7 @@ function CadastroUsuario() {
                             name='senha'
                             margin="normal"
                             type='password'
+                            required
                             fullWidth>
                         </TextField>
 
@@ -114,17 +136,7 @@ function CadastroUsuario() {
                             name='confirmarSenha'
                             margin='normal'
                             type='password'
-                            fullWidth>
-                        </TextField>
-
-                        <TextField
-                            value={user.foto}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
-                            id='foto'
-                            label='foto'
-                            variant='outlined'
-                            name='foto'
-                            margin="normal"
+                            required
                             fullWidth>
                         </TextField>
 
@@ -134,7 +146,7 @@ function CadastroUsuario() {
                                     Cancelar
                                 </Button>
                             </Link>
-                            <Button type='submit' variant='contained' className='btnCadastrar'>
+                                <Button type='submit' variant='contained' className='btnCadastrar'>
                                     Cadastrar
                                 </Button>
                         </Box>
