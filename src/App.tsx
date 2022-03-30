@@ -6,6 +6,8 @@ import Login from './paginas/login/Login';
 import Footer from './components/estaticos/footer/Footer';
 import './App.css';
 import CadastroUsuario from './paginas/cadastroUsusario/CadastroUsuario';
+import ListaTema from './components/temas/listatema/ListaTema';
+import ListaPostagem from './components/postagens/listapostagem/ListaPostagem';
 
 function App() {
   return (
@@ -27,6 +29,14 @@ function App() {
 
               <Route path='/cadastrousuario'>
                 <CadastroUsuario />
+              </Route>
+
+              <Route path='/temas'>
+                <ListaTema />
+              </Route>
+
+              <Route path='/postagens'>
+                <ListaPostagem />
               </Route>
               
             </div>
