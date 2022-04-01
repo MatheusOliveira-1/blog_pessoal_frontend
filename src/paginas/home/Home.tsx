@@ -44,7 +44,7 @@ function Home(){
                         </Typography>
                     </Box>
 
-                    <Link to='/postagens' className='text-decorator-none'>
+                   
                         <Box display="flex" justifyContent="center">
 
                             <Box>
@@ -57,7 +57,7 @@ function Home(){
 
                             </Button>
                         </Box>
-                    </Link>
+                  
 
                 </Grid>
                 <Grid item xs={6} >
