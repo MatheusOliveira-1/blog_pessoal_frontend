@@ -16,116 +16,124 @@ function CadastroPost() {
 
     useEffect(() => {
         if (token == "") {
-          alert("Você precisa estar logado")
-          history.push('/login')
+            alert("Você precisa estar logado")
+            history.push('/login')
         }
-      }, [token])
+    }, [token])
 
-      const [tema, setTema] = useState<Tema>({
-          id: 0,
-          descricao:''
-      })
+    const [tema, setTema] = useState<Tema>({
+        id: 0,
+        descricao: ''
+    })
 
-      const [postagem, setPostagem] = useState<Postagem>({
-          id: 0,
-          titulo:'',
-          texto:'',
-          tema: null
-      })
+    const [postagem, setPostagem] = useState<Postagem>({
+        id: 0,
+        titulo: '',
+        texto: '',
+        tema: null
+    })
 
-      useEffect(() => {
-          setPostagem({
-              ...postagem,
-              tema:tema
-          })
-      }, [tema])
+    useEffect(() => {
+        setPostagem({
+            ...postagem,
+            tema: tema
+        })
+    }, [tema])
 
-      useEffect(() =>{
-          getTemas()
-          if(id !== undefined){
-              findByIdPostagem(id)
-          }
-      }, [id])
+    useEffect(() => {
+        getTemas()
+        if (id !== undefined) {
+            findByIdPostagem(id)
+        }
+    }, [id])
 
-      async function getTemas(){
-          await buscaId(`temas/`,setTemas, {
-              headers: {
-                  'Authorization':token
-              }
-          })
-      }
+    async function getTemas() {
+        await buscaId(`temas/`, setTemas, {
+            headers: {
+                'Authorization': token
+            }
+        })
+    }
 
-      async function findByIdPostagem(id: string){
-          await buscaId(`postagens/${id}`, setPostagem, {
-              headers: {
-                  'Authorization': token
-              }
-          })
-      }
+    async function findByIdPostagem(id: string) {
+        await buscaId(`postagens/${id}`, setPostagem, {
+            headers: {
+                'Authorization': token
+            }
+        })
+    }
 
-      function updatedPostagem(e: ChangeEvent<HTMLInputElement>){
-          setPostagem({
-              ...postagem,
-              [e.target.name]: e.target.value,
-              tema: tema
-          })
-      }
-      
-      function onSubmit(e: ChangeEvent<HTMLFormElement>){
-          e.preventDefault()
-          
-          if(id !== undefined) {
-              put(`/postagens`, postagem, setPostagem, {
-                  headers: {
-                      'Authorization': token
-                  }
-              })
-              alert('Postagem atualizada com sucesso!')
-          } else {
-              post(`postagens`, postagem, setPostagem, {
-                  headers: {
-                      'Authorization': token
-                  }
-              })
-              alert('Postagem cadastrada com sucesso!')
-          }
-          back()
-      }
+    function updatedPostagem(e: ChangeEvent<HTMLInputElement>) {
+        setPostagem({
+            ...postagem,
+            [e.target.name]: e.target.value,
+            tema: tema
+        })
+    }
 
-      function back(){
-          history.push('/postagens')
-      }
+    async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
+        e.preventDefault()
+
+        if (id !== undefined) {
+            try {
+                await put(`/postagens`, postagem, setPostagem, {
+                    headers: {
+                        'Authorization': token
+                    }
+                })
+                alert('Postagem atualizada com sucesso!')
+            } catch (error) {
+                alert('Erro ao atualizar postagem, por favor verifique os campos.')
+            }
+        } else {
+            try {
+           await post(`postagens`, postagem, setPostagem, {
+                headers: {
+                    'Authorization': token
+                }
+            })
+            alert('Postagem cadastrada com sucesso!')
+        } catch (error){
+            alert('Erro ao cadastrar, por favor verifique os campos.')
+        }
+        }
+        back()
+    }
+
+    function back() {
+        history.push('/postagens')
+    }
 
     return (
         <Container maxWidth="sm" className="topo">
             <form onSubmit={onSubmit}>
-                <Typography 
-                variant="h3" 
-                color="textSecondary" 
-                component="h1" 
-                align="center" >
+                <Typography
+                    variant="h3"
+                    color="textSecondary"
+                    component="h1"
+                    align="center" >
                     Cadastro de Postagem
                 </Typography>
 
                 <TextField
-                value={postagem.titulo}
-                onChange={(e:ChangeEvent<HTMLInputElement>) => updatedPostagem(e)} 
-                id="titulo" 
-                label="titulo" 
-                variant="outlined" 
-                name="titulo" 
-                margin="normal" 
-                fullWidth />
+                    value={postagem.titulo}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)}
+                    id="titulo"
+                    label="titulo"
+                    variant="outlined"
+                    name="titulo"
+                    margin="normal"
+                    fullWidth />
 
                 <TextField
-                value={postagem.texto}
-                onChange={(e:ChangeEvent<HTMLInputElement>) => updatedPostagem(e)} 
-                id="texto" 
-                label="texto" 
-                name="texto" 
-                variant="outlined" 
-                margin="normal" 
-                fullWidth />
+                    value={postagem.texto}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)}
+                    id="texto"
+                    label="texto"
+                    name="texto"
+                    variant="outlined"
+                    margin="normal"
+                    fullWidth />
 
                 <FormControl >
                     <InputLabel id="demo-simple-select-helper-label">Tema </InputLabel>
@@ -141,7 +149,7 @@ function CadastroPost() {
                             temas.map(tema => (
                                 <MenuItem value={tema.id}>{tema.descricao}</MenuItem>
                             ))
-                        }    
+                        }
                     </Select>
                     <FormHelperText>Escolha um tema para a postagem</FormHelperText>
                     <Button type="submit" variant="contained" color="primary">
