@@ -6,6 +6,7 @@ import Tema from '../../../models/Tema';
 import useLocalStorage from 'react-use-localstorage';
 import Postagem from '../../../models/Postagem';
 import { busca, buscaId, post, put } from '../../../services/Service';
+import ModalPostagem from '../modalPostagem/ModalPostagem';
 
 function CadastroPost() {
 
@@ -30,6 +31,7 @@ function CadastroPost() {
         id: 0,
         titulo: '',
         texto: '',
+        data: '',
         tema: null
     })
 
@@ -82,25 +84,34 @@ function CadastroPost() {
                     }
                 })
                 alert('Postagem atualizada com sucesso!')
+                back()
+               
             } catch (error) {
                 alert('Erro ao atualizar postagem, por favor verifique os campos.')
+    
             }
+
         } else {
             try {
-           await post(`postagens`, postagem, setPostagem, {
-                headers: {
-                    'Authorization': token
-                }
-            })
-            alert('Postagem cadastrada com sucesso!')
-        } catch (error){
-            alert('Erro ao cadastrar, por favor verifique os campos.')
+                await post(`postagens`, postagem, setPostagem, {
+                    headers: {
+                        'Authorization': token
+                    }
+                    
+                })
+                alert('Postagem cadastrada com sucesso!')
+                back()
+             
+                
+            } catch (error) {
+                alert('Erro ao cadastrar, por favor verifique os campos.')
+            }
         }
-        }
-        back()
+        
     }
 
     function back() {
+        history.push('/')
         history.push('/postagens')
     }
 

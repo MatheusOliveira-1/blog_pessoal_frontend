@@ -35,17 +35,21 @@ function DeletarTema() {
     })
   }
 
-  function sim(){
-    history.push('/temas')
-    deleteId(`/temas/${id}`, {
-      headers: {
-        'Authorization': token
-      }
-    })
-    alert('Tema deletado com sucesso')
+  async function sim() {
+    try {
+      history.push('/temas')
+      await deleteId(`/temas/${id}`, {
+        headers: {
+          'Authorization': token
+        }
+      })
+      alert('Tema deletado com sucesso')
+    } catch (error) {
+      alert('Erro ao deletar tema')
+    }
   }
 
-  function nao(){
+  function nao() {
     history.push('/temas')
   }
 
@@ -63,26 +67,26 @@ function DeletarTema() {
               </Typography>
             </Box>
           </CardContent>
-          
+
           <CardActions>
             <Box display="flex" justifyContent="start" ml={1.0} mb={2} >
               <Box mx={2}>
-                <Button 
-                onClick={sim}
-                variant="contained"
-                className="marginLeft" 
-                size='large' 
-                color="primary">
+                <Button
+                  onClick={sim}
+                  variant="contained"
+                  className="marginLeft"
+                  size='large'
+                  color="primary">
                   Sim
                 </Button>
               </Box>
 
               <Box mx={2}>
                 <Button
-                onClick={nao} 
-                variant="contained" 
-                size='large' 
-                color="secondary">
+                  onClick={nao}
+                  variant="contained"
+                  size='large'
+                  color="secondary">
                   Não
                 </Button>
               </Box>

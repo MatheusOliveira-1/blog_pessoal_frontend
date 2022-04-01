@@ -9,7 +9,7 @@ import './CadastroUsuario.css'
 function CadastroUsuario() {
 
     let history = useHistory();
-    const [confirmarSenha,setConfirmarSenha] = useState<String>("")
+    const [confirmarSenha, setConfirmarSenha] = useState<String>("")
 
     /*Atualiza a partir do que o usuario está digitando*/
     const [user, setUser] = useState<User>(
@@ -18,9 +18,9 @@ function CadastroUsuario() {
             nome: '',
             usuario: '',
             senha: '',
-            foto:''
+            foto: ''
         })
-    
+
     /*Atualiza a partir da resposta do back-end*/
     const [userResult, setUserResult] = useState<User>(
         {
@@ -28,7 +28,7 @@ function CadastroUsuario() {
             nome: '',
             usuario: '',
             senha: '',
-            foto:''
+            foto: ''
         })
 
     useEffect(() => {
@@ -37,33 +37,41 @@ function CadastroUsuario() {
         }
     }, [userResult])/*Este array dispara a função toda vez que o userResult é alterado*/
 
-    
+
     /*Atualiza o estado do setUser a partir do que está sendo digitado*/
     function updatedModel(e: ChangeEvent<HTMLInputElement>) {
-        
+
         setUser({
             ...user,
             [e.target.name]: e.target.value
         })
-        
+
     }
 
     /**Atualiza o estado do confirmarSenha a partir do que foi digitado*/
-    function confirmarSenhaHandle(e: ChangeEvent<HTMLInputElement>){
+    function confirmarSenhaHandle(e: ChangeEvent<HTMLInputElement>) {
         setConfirmarSenha(e.target.value)
     }
 
     /**Realiza o cadastro do usuário fazendo a comparação das senhas dentro do if */
     async function cadastrar(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
-        if(confirmarSenha === user.senha && user.senha.length >= 8){
-        await cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
-        alert('Usuario cadastrado com sucesso')
-        }else{
+
+
+        if (confirmarSenha === user.senha && user.senha.length >= 8) {
+            try {
+                await cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
+                alert('Usuario cadastrado com sucesso')
+
+            } catch (error) {
+                alert('Usuario já existente')
+            }
+            
+        } else {
             alert('Dados inconsistentes. Favor verificar as informações de cadastro.')
         }
     }
-    
+
     return (
         <Grid container direction="row" justifyContent="center" alignItems="center">
             <Grid xs={6} className='imagem2'></Grid>
@@ -98,11 +106,11 @@ function CadastroUsuario() {
                             variant='outlined'
                             name='usuario'
                             margin='normal'
-                            type = 'email'
+                            type='email'
                             required
                             fullWidth>
                         </TextField>
-             
+
                         <TextField
                             value={user.foto}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
@@ -146,9 +154,9 @@ function CadastroUsuario() {
                                     Cancelar
                                 </Button>
                             </Link>
-                                <Button type='submit' variant='contained' className='btnCadastrar'>
-                                    Cadastrar
-                                </Button>
+                            <Button type='submit' variant='contained' className='btnCadastrar'>
+                                Cadastrar
+                            </Button>
                         </Box>
                     </form>
                 </Box>

@@ -6,6 +6,7 @@ import { Box, Card, CardActions, CardContent, Button, Typography } from '@materi
 import './ListaPostagem.css';
 import useLocalStorage from 'react-use-localstorage';
 import { useHistory } from 'react-router-dom'
+import ModalPostagem from '../modalPostagem/ModalPostagem';
 
 function ListaPostagem() {
   const [posts, setPosts] = useState<Postagem[]>([])
@@ -36,6 +37,9 @@ function ListaPostagem() {
 
   return (
     <>
+      <Box>
+        <ModalPostagem />
+      </Box>
       {
         posts.map(post => (
           <Box m={2} >
@@ -44,19 +48,26 @@ function ListaPostagem() {
                 <Typography color="textSecondary" gutterBottom>
                   Postagens
                 </Typography>
+
                 <Typography variant="h5" component="h2">
                   {post.titulo}
                 </Typography>
+
                 <Typography variant="body2" component="p">
                   {post.texto}
                 </Typography>
+
+                <Typography variant="body2" component="p">
+                  {'Data:' + post.data}
+                </Typography>
+
                 <Typography variant="body2" component="p">
                   {post.tema?.descricao}
                 </Typography>
+
               </CardContent>
               <CardActions>
                 <Box display="flex" justifyContent="center" mb={1.5}>
-
                   <Link to={`/formularioPostagem/${post.id}`} className="text-decorator-none" >
                     <Box mx={1}>
                       <Button variant="contained" className="marginLeft" size='small' color="primary" >
