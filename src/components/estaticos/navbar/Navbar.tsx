@@ -18,7 +18,7 @@ function Navbar() {
     let history = useHistory()
 
     function goLogout(){
-        dispatch(addToken(""))
+        dispatch(addToken(''))
         alert('Usuário deslogado')
         history.push('/login')
     }
