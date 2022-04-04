@@ -14,8 +14,6 @@ function Navbar() {
     )
 
     const dispatch = useDispatch()
-
-    dispatch(addToken(token))
     
     let history = useHistory()
 
