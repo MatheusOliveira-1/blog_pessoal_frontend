@@ -18,7 +18,7 @@ function Navbar() {
 
     return (
         <>
-            <AppBar position="static" style={{backgroundColor: "#1C1C1C", color: "#00A3C0"}}>
+            <AppBar position="static" style={{backgroundColor: "#1C1C1C", color: "#00FFFF"}}>
                 <Toolbar variant="dense">
                     <Box className="cursor" >
                         <Typography variant="h5" color="inherit">

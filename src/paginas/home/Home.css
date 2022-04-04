@@ -1,23 +1,84 @@
 .caixa{
     background-color: #000000 !important;
-    min-height: calc(100vh - 120px - 108px);
+    min-height: 100vh!important;
 }
 
 .titulo{
-    color: #00A3C0!important;
+    color: #00FFFF!important;
     font-weight: bold!important;
 }
 
+
 .botao{
-    border-color: #ffffff!important;
-    background-color: #1C1C1C!important; 
-    color: #00A3C0!important;
+    border-top:solid 5px #ff0000!important;
+    border-right:solid 5px #ff0000!important;
+    background-color: #FF00FF!important;
+    border-top-left-radius: 10px!important;
+    border-bottom-left-radius: 10px!important;  
+    border-top-right-radius: 10px!important;
+    border-bottom-right-radius: 10px!important; 
+    margin-left: 10px!important;
+    color: #000000!important;
     font-weight: bold!important;
     text-decoration: none!important;
 }
 
+.botao:hover{
+    border-top:solid 0px #ff0000!important;
+    border-right:solid 0px #ff0000!important;
+    background-color: #FF00FF!important;
+    border-top-left-radius: 10px!important;
+    border-bottom-left-radius: 10px!important;  
+    border-top-right-radius: 10px!important;
+    border-bottom-right-radius: 10px!important; 
+    color: #000000!important;
+    font-weight: bold!important;
+    text-decoration: none!important;
+
+}
+
 .postagens{
     background-color: #ffffff;
+}
+
+.text-decorator-none{
+    text-decoration: none!important;
+}
+
+.caixa-icone{
+    margin: 30px;
+}
+
+.icone-home{
+    background-image: url(../../assets/img/icone-principal.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 30vh;
+    width: auto;
+    transition: 3;
+}
+
+
+.icone-home:hover{
+    min-height: 35vh;
+    transition: 0.5s;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: 3;
+
+}
+
+
+.icone-home:not(:hover){
+    height: 30vh;
+    transition: 0.5s;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: 3;
+
 }
 
 .text-decorator-none{
