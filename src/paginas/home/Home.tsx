@@ -9,14 +9,21 @@ import Tema from '../../models/Tema';
 import User from '../../models/User';
 
 import './Home.css';
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../store/tokens/TokensReducer';
 
 function Home(){
 
     let history = useHistory();
 
     const { id } = useParams<{ id: string }>()
-    const [token, setToken] = useLocalStorage('token')
+
+    /** token = store.tokens */
+    const token = useSelector<TokenState, TokenState['tokens']>(
+        (state) => state.tokens
+    )
     const [temas, setTemas] = useState<Tema[]>([])
+
     const [user, setUser] = useState<User>()
 
     useEffect(() => {

@@ -73,7 +73,7 @@ function CadastroUsuario() {
     }
 
     return (
-        <Grid container direction="row" justifyContent="center" alignItems="center">
+        <Grid container direction="row" justifyContent="center" alignItems="center" className="background-cadastro">
             <Grid xs={6} className='imagem2'></Grid>
             <Grid xs={6} alignItems='center'>
                 <Box padding={10}>
@@ -94,6 +94,7 @@ function CadastroUsuario() {
                             variant='outlined'
                             name='nome'
                             margin="normal"
+                            className="textfields-cadastro"
                             required
                             fullWidth>
                         </TextField>
@@ -107,6 +108,7 @@ function CadastroUsuario() {
                             name='usuario'
                             margin='normal'
                             type='email'
+                            className="textfields-cadastro"
                             required
                             fullWidth>
                         </TextField>
@@ -119,6 +121,7 @@ function CadastroUsuario() {
                             variant='outlined'
                             name='foto'
                             margin="normal"
+                            className="textfields-cadastro"
                             fullWidth>
                         </TextField>
 
@@ -131,6 +134,7 @@ function CadastroUsuario() {
                             name='senha'
                             margin="normal"
                             type='password'
+                            className="textfields-cadastro"
                             required
                             fullWidth>
                         </TextField>
@@ -144,6 +148,7 @@ function CadastroUsuario() {
                             name='confirmarSenha'
                             margin='normal'
                             type='password'
+                            className="textfields-cadastro"
                             required
                             fullWidth>
                         </TextField>

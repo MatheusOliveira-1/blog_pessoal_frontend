@@ -1,15 +1,24 @@
+.background-login{
+    background-color: #000000!important;
+}
+
 .textos{
     font-weight: bold!important;
 
 }
 
+.pergunta{
+    color: #00A3C0;
+
+}
+
 .imagem{
-    background-image: url(https://i.imgur.com/Tu88W61.png);
+    background-image: url(../../assets/img/background-analitic.svg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-color: #00A3C0;
-    min-height: calc(100vh - 120px - 108px);
+    min-height: 100vh;
     width: 100vh; 
 }
 .text-decorator-none{
@@ -23,5 +32,14 @@
 
 .button-logar:hover{
     font-weight: bold !important;
+}
+
+.textfields-login{
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.textfields-login::after{
+    color: #00A3C0!important;
 }
 

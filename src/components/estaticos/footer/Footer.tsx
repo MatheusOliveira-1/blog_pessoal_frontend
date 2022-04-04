@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Grid, Typography } from "@material-ui/core";
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import './Footer.css'
+import { useDispatch } from "react-redux";
+import { addToken } from "../../../store/tokens/Action";
 
 function Footer() {
-    return (
-        <>
+
+    const [token, setToken] = useState('')
+
+    const dispatch = useDispatch()
+
+    dispatch(addToken(token))
+
+    var footerComponent
+
+    if (token !== "") {
+        footerComponent =
             <Grid container direction="row" justifyContent="center" alignItems="center">
                 <Grid alignItems="center" item xs={12}>
                     <Box className='box1'>
@@ -34,6 +45,12 @@ function Footer() {
                     </Box>
                 </Grid>
             </Grid>
+
+    }
+
+    return (
+        <>
+            {footerComponent}
         </>
     )
 }

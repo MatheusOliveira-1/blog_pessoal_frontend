@@ -5,13 +5,20 @@ import useLocalStorage from "react-use-localstorage";
 import { login } from "../../services/Service";
 import UserLogin from "../../models/UserLogin";
 import './Login.css';
+import { useDispatch } from "react-redux";
+import { addToken } from "../../store/tokens/Action";
 
 
 function Login() {
 
     let history = useHistory();
     
-    const[token, setToken] = useLocalStorage('token');
+    const[token, setToken] = useState('')
+
+    const dispatch = useDispatch()
+
+    dispatch(addToken(token))
+    
     const[userLogin, setUserLogin] = useState<UserLogin>({
         id: 0,
         usuario:"",
@@ -46,7 +53,7 @@ function Login() {
     }
 
   return (
-      <Grid container direction='row' justifyContent='center' alignItems='center'>
+      <Grid container direction='row' justifyContent='center' alignItems='center' className='background-login'>
           <Grid alignItems='center' xs={6}>
               <Box paddingX={20}>
                   <form onSubmit={onSubmit}>
@@ -65,6 +72,7 @@ function Login() {
                         variant='outlined' 
                         name='usuario' 
                         margin="normal" 
+                        className="textfields-login"
                         fullWidth>
                         </TextField>
                         <TextField 
@@ -76,6 +84,7 @@ function Login() {
                         name='senha' 
                         margin='normal' 
                         type='password'
+                        className="textfields-login"
                         fullWidth>
                         </TextField>
                         <Box>
@@ -89,7 +98,8 @@ function Login() {
                           <Typography 
                           variant="subtitle1" 
                           gutterBottom 
-                          align='center'>
+                          align='center'
+                          className='pergunta'>
                               Não tem uma conta?
                           </Typography>
                       </Box>
