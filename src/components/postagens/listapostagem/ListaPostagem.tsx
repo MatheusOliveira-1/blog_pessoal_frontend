@@ -7,10 +7,14 @@ import './ListaPostagem.css';
 import useLocalStorage from 'react-use-localstorage';
 import { useHistory } from 'react-router-dom'
 import ModalPostagem from '../modalPostagem/ModalPostagem';
+import { TokenState } from '../../../store/tokens/TokensReducer';
+import { useSelector } from 'react-redux';
 
 function ListaPostagem() {
   const [posts, setPosts] = useState<Postagem[]>([])
-  const [token, setToken] = useLocalStorage('token');
+  const token = useSelector<TokenState, TokenState['tokens']>(
+    (state) => state.tokens
+)
   let history = useHistory();
 
   useEffect(() => {

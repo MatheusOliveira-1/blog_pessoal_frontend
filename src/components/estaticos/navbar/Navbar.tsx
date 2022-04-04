@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { AppBar, Box, Toolbar, Typography } from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
-import useLocalStorage from "react-use-localstorage";
 
 import './Navbar.css'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToken } from "../../../store/tokens/Action";
+import { TokenState } from "../../../store/tokens/TokensReducer";
 
 function Navbar() {
 
-    const[token, setToken] = useState('')
+    const token = useSelector<TokenState, TokenState['tokens']>(
+        (state) => state.tokens
+    )
 
     const dispatch = useDispatch()
 
