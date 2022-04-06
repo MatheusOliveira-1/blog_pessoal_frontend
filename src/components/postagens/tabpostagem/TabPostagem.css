@@ -5,21 +5,24 @@
      font-weight: bold!important;
  }
 
- .sobre-nos{
-     background-image: linear-gradient(#00FFFF90, #00FFFF90, #00FFFF90, #00FFFF90, #000000)!important;
+ .background-sobre-nos{
+     background-image: url(../../../assets/img/background-diverso-transparencia.svg);
+     background-color: #000000;
+     background-size: 400px;
+
  }
 
  .titulo-sobre{
      align-items: center;
      text-align: center!important;
      font-weight: bold!important;
-     color: #000000!important; 
+     color: #00FFFF!important; 
      
 }
 
  .texto-sobre{
     justify-content: center!important;
     text-align: center!important;
-    color: #000000!important;
+    color: #00FFFF!important;
     padding: 30px!important;
 }

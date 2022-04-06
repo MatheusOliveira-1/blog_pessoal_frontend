@@ -1,6 +1,7 @@
 import { Box, Grid, TextField, Typography, Button } from "@material-ui/core";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 import User from "../../models/User";
 import { cadastroUsuario } from "../../services/Service";
 import './CadastroUsuario.css'
@@ -61,22 +62,49 @@ function CadastroUsuario() {
         if (confirmarSenha === user.senha && user.senha.length >= 8) {
             try {
                 await cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
-                alert('Usuario cadastrado com sucesso')
+                toast.success('Usuario cadastrado com sucesso',{
+                    position: 'top-right',
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: 'dark',
+                    progress: undefined
+                })
 
             } catch (error) {
-                alert('Usuario já existente')
+                toast.error('Usuario já existente',{
+                    position: 'top-right',
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: 'dark',
+                    progress: undefined
+                })
             }
             
         } else {
-            alert('Dados inconsistentes. Favor verificar as informações de cadastro.')
+            toast.error('Dados inconsistentes. Favor verificar as informações de cadastro.',{
+                position: 'top-right',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: 'dark',
+                progress: undefined
+            })
         }
     }
 
     return (
-        <Grid container direction="row" justifyContent="center" alignItems="center" className="background-cadastro">
+        <Grid container direction="row" justifyContent="center" alignItems="center" className="background-formulario-cadastro">
             <Grid xs={6} className='imagem2'></Grid>
             <Grid xs={6} alignItems='center'>
-                <Box padding={10}>
+                <Box paddingX={10}>
                     <form onSubmit={cadastrar}>
                         <Typography variant='h3'
                             gutterBottom

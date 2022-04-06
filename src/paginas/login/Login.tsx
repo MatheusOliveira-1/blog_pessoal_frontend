@@ -1,12 +1,13 @@
-import { Box, Button, Grid, TextField, Typography } from "@material-ui/core";
 import React, {ChangeEvent, useEffect, useState} from "react";
+import { Box, Button, Grid, TextField, Typography } from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
 import useLocalStorage from "react-use-localstorage";
 import { login } from "../../services/Service";
 import UserLogin from "../../models/UserLogin";
 import './Login.css';
 import { useDispatch } from "react-redux";
-import { addToken } from "../../store/tokens/Action";
+import { addId, addToken } from "../../store/tokens/Action";
+import { toast } from "react-toastify";
 
 
 function Login() {
@@ -21,10 +22,21 @@ function Login() {
     
     const[userLogin, setUserLogin] = useState<UserLogin>({
         id: 0,
-        usuario:"",
-        senha:"",
-        foto:"",
-        token:"" 
+        nome:'',
+        usuario:'',
+        senha:'',
+        foto:'',
+        token:''
+    })
+
+    const[respUserLogin, setrespUserLogin]= useState<UserLogin>({
+        id: 0,
+        nome:'',
+        usuario:'',
+        senha:'',
+        foto:'',
+        token:''
+
     })
 
     function updatedModel(e:ChangeEvent<HTMLInputElement>){
@@ -35,20 +47,41 @@ function Login() {
     }
 
     useEffect(() => {
-        if(token != ''){
+        if(respUserLogin.token != ''){
+            dispatch(addToken(respUserLogin.token))
+            dispatch(addId(respUserLogin.id.toString()))
             history.push('/home')
         }
-    }, [token])
+    }, [respUserLogin.token])
 
     async function onSubmit(e: ChangeEvent<HTMLFormElement>){
         e.preventDefault();
 
         try{
-            await login(`usuarios/logar`, userLogin, setToken)
+            await login(`usuarios/logar`, userLogin, setrespUserLogin)
+            toast.success('Usuário logado com sucesso!!!',{
+                position: 'top-right',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: 'dark',
+                progress: undefined
+            })
             
-            alert('Usuário logado com sucesso!!!')
+        
         }catch(error){
-            alert('Os dados do usuário estão inconsistentes. Erro ao logar.');
+            toast.error('Os dados do usuário estão inconsistentes. Erro ao logar.',{
+                position: 'top-right',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: 'dark',
+                progress: undefined
+            })
         }
     }
 
@@ -61,7 +94,7 @@ function Login() {
                       gutterBottom 
                       color="textPrimary" 
                       component='h3' align='center' 
-                      className="textos">
+                      className="titulo-login">
                           Entrar
                         </Typography>
                         <TextField

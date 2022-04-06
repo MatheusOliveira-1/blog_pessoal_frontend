@@ -6,12 +6,13 @@
 .titulo{
     color: #00FFFF!important;
     font-weight: bold!important;
+    margin: 1%!important;
 }
 
 
 .botao{
-    border-top:solid 5px #ff0000!important;
-    border-right:solid 5px #ff0000!important;
+    border-top:solid 5px #FFaaFF!important;
+    border-right:solid 5px #FF00aa!important;
     background-color: #FF00FF!important;
     border-top-left-radius: 10px!important;
     border-bottom-left-radius: 10px!important;  

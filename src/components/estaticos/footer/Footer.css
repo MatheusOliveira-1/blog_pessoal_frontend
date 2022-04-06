@@ -9,11 +9,20 @@
 }
 
 .box2{
-    background-color: #363636 !important; 
+    background-color: #00FFFF !important; 
     height: 60px !important;
 }
 
-.textos{
+.siga-nos{
     color: #00FFFF!important;
+    text-decoration: none!important;
+}
+
+.link-footer{
+    color: #000000!important;
+    text-decoration: none!important;
+}
+
+a{
     text-decoration: none!important;
 }

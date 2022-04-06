@@ -9,9 +9,10 @@ import { busca, buscaId, post, put } from '../../../services/Service';
 import ModalPostagem from '../modalPostagem/ModalPostagem';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/TokensReducer';
+import { toast } from 'react-toastify';
 
 function CadastroPost() {
-
+    
     let history = useHistory();
     const { id } = useParams<{ id: string }>()
     const token = useSelector<TokenState, TokenState['tokens']>(
@@ -21,7 +22,16 @@ function CadastroPost() {
 
     useEffect(() => {
         if (token == "") {
-            alert("Você precisa estar logado")
+            toast.error('Você precisa estar logado',{
+                position: 'top-right',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: 'dark',
+                progress: undefined
+            })
             history.push('/login')
         }
     }, [token])
@@ -87,11 +97,30 @@ function CadastroPost() {
                         'Authorization': token
                     }
                 })
-                alert('Postagem atualizada com sucesso!')
+
+                toast.success('Postagem atualizada com sucesso!',{
+                    position: 'top-right',
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: 'dark',
+                    progress: undefined
+                })
                 back()
                
             } catch (error) {
-                alert('Erro ao atualizar postagem, por favor verifique os campos.')
+                toast.error('Erro ao atualizar postagem, por favor verifique os campos.',{
+                    position: 'top-right',
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: 'dark',
+                    progress: undefined
+                })
     
             }
 
@@ -103,12 +132,30 @@ function CadastroPost() {
                     }
                     
                 })
-                alert('Postagem cadastrada com sucesso!')
+                toast.success('Postagem cadastrada com sucesso!',{
+                    position: 'top-right',
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: 'dark',
+                    progress: undefined
+                })
                 back()
              
                 
             } catch (error) {
-                alert('Erro ao cadastrar, por favor verifique os campos.')
+                toast.error('Erro ao cadastrar postagem, por favor verifique os campos.',{
+                    position: 'top-right',
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: 'dark',
+                    progress: undefined
+                })
             }
         }
         

@@ -4,11 +4,18 @@
 
 .textos{
     font-weight: bold!important;
+    text-decoration: none!important;
+
+}
+
+.titulo-login{
+    color: #00FFFF!important;
+    font-weight: bold!important;
 
 }
 
 .pergunta{
-    color: #00A3C0;
+    color: #00FFFF;
 
 }
 
@@ -17,7 +24,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-color: #00A3C0;
+    background-color: #00FFFF;
     min-height: 100vh;
     width: 100vh; 
 }
@@ -26,8 +33,9 @@
 }
 
 .button-logar{
-    color: #ffffff !important;
-    background-color: #00A3C0 !important;
+    font-weight: bold!important;
+    color:#000000 !important;
+    background-color: #00FFFF !important;
 }
 
 .button-logar:hover{
@@ -40,6 +48,6 @@
 }
 
 .textfields-login::after{
-    color: #00A3C0!important;
+    color: #00FFFF!important;
 }
 

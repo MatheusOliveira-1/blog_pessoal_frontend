@@ -6,6 +6,7 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import Postagem from '../../../models/Postagem';
 import './DeletarPostagem.css';
+import { toast } from 'react-toastify';
 
 function DeletarPostagem() {
 
@@ -16,7 +17,16 @@ function DeletarPostagem() {
 
   useEffect(() => {
     if (token == "") {
-      alert("Você precisa estar logado")
+      toast.error('Você precisa estar logado',{
+        position: 'top-right',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: 'dark',
+        progress: undefined
+    })
       history.push('/login')
     }
   }, [token])
@@ -35,7 +45,7 @@ function DeletarPostagem() {
     })
   }
 
- async function sim() {
+  async function sim() {
     try {
       history.push('/postagens')
       await deleteId(`/postagens/${id}`, {
@@ -43,9 +53,27 @@ function DeletarPostagem() {
           'Authorization': token
         }
       })
-      alert('Postagem deletada com sucesso')
-    } catch(error){
-      alert('Erro ao deletar postagem')
+      toast.success('Postagem deletada com sucesso!', {
+        position: 'top-right',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: 'dark',
+        progress: undefined
+      })
+    } catch (error) {
+      toast.error('Erro ao deletar postagem', {
+        position: 'top-right',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: 'dark',
+        progress: undefined
+      })
     }
   }
 
