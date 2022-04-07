@@ -130,6 +130,7 @@ function CadastroTema() {
     }
 
     function back() {
+        history.push('/')
         history.push('/temas')
     }
 

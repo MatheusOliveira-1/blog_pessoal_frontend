@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useState } from 'react'
-import { Container, Typography, TextField, Button, Select, InputLabel, MenuItem, FormControl, FormHelperText } from "@material-ui/core"
+import { Container, Typography, TextField, Button, Select, InputLabel, MenuItem, FormControl, FormHelperText, Box } from "@material-ui/core"
 import './CadastroPost.css';
 import { useHistory, useParams } from 'react-router-dom';
 import Tema from '../../../models/Tema';
@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 import { UserState } from '../../../store/tokens/UserReducer';
 
 function CadastroPost() {
-    
+
     let history = useHistory();
     const { id } = useParams<{ id: string }>()
     const token = useSelector<UserState, UserState['tokens']>(
@@ -20,7 +20,7 @@ function CadastroPost() {
 
     useEffect(() => {
         if (token == "") {
-            toast.error('Você precisa estar logado',{
+            toast.error('Você precisa estar logado', {
                 position: 'top-right',
                 autoClose: 2000,
                 hideProgressBar: false,
@@ -70,7 +70,7 @@ function CadastroPost() {
     }
 
     async function findByIdPostagem(id: string) {
-        await buscaId   (`postagens/${id}`, setPostagem, {
+        await buscaId(`postagens/${id}`, setPostagem, {
             headers: {
                 'Authorization': token
             }
@@ -89,6 +89,7 @@ function CadastroPost() {
         e.preventDefault()
 
         if (id !== undefined) {
+
             try {
                 await put(`/postagens`, postagem, setPostagem, {
                     headers: {
@@ -96,7 +97,7 @@ function CadastroPost() {
                     }
                 })
 
-                toast.success('Postagem atualizada com sucesso!',{
+                toast.success('Postagem atualizada com sucesso!', {
                     position: 'top-right',
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -107,9 +108,9 @@ function CadastroPost() {
                     progress: undefined
                 })
                 back()
-               
+
             } catch (error) {
-                toast.error('Erro ao atualizar postagem, por favor verifique os campos.',{
+                toast.error('Erro ao atualizar postagem, por favor verifique os campos.', {
                     position: 'top-right',
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -119,18 +120,19 @@ function CadastroPost() {
                     theme: 'dark',
                     progress: undefined
                 })
-    
+
             }
 
         } else {
+
             try {
                 await post(`postagens`, postagem, setPostagem, {
                     headers: {
                         'Authorization': token
                     }
-                    
+
                 })
-                toast.success('Postagem cadastrada com sucesso!',{
+                toast.success('Postagem cadastrada com sucesso!', {
                     position: 'top-right',
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -141,10 +143,10 @@ function CadastroPost() {
                     progress: undefined
                 })
                 back()
-             
-                
+
+
             } catch (error) {
-                toast.error('Erro ao cadastrar postagem, por favor verifique os campos.',{
+                toast.error('Erro ao cadastrar postagem, por favor verifique os campos.', {
                     position: 'top-right',
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -156,7 +158,7 @@ function CadastroPost() {
                 })
             }
         }
-        
+
     }
 
     function back() {
@@ -164,17 +166,36 @@ function CadastroPost() {
         history.push('/postagens')
     }
 
+    var textoCadAtualiza
+
+    if (id == undefined) {
+        textoCadAtualiza =
+            <Typography
+                variant="h3"
+                color="textSecondary"
+                component="h1"
+                align="center" >
+                Cadastro de Postagem
+            </Typography>
+
+    } else {
+        textoCadAtualiza =
+        <Typography
+            variant="h3"
+            color="textSecondary"
+            component="h1"
+            align="center" >
+            Atualização de Postagem
+        </Typography>
+    }
+
+
     return (
         <Container maxWidth="sm" className="topo">
             <form onSubmit={onSubmit}>
-                <Typography
-                    variant="h3"
-                    color="textSecondary"
-                    component="h1"
-                    align="center" >
-                    Cadastro de Postagem
-                </Typography>
-
+                <Box>
+                    {textoCadAtualiza}
+                </Box>
                 <TextField
                     value={postagem.titulo}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)}

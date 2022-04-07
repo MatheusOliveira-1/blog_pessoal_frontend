@@ -3,7 +3,6 @@ import { AppBar, Tab, Tabs, Typography, Box } from '@material-ui/core';
 import { TabContext, TabPanel } from '@material-ui/lab';
 import ListaPostagem from '../listapostagem/ListaPostagem';
 import './TabPostagem.css';
-import { red } from '@material-ui/core/colors';
 
 
 function TabPostagem() {
@@ -15,12 +14,12 @@ function TabPostagem() {
     <>
       <TabContext value={value} >
         <AppBar position="static" className='app-bar'>
-          <Tabs centered onChange={handleChange}>
-            <Tab label="Todas as postagens" value="1"/>
-            <Tab label="Sobre nós" value="2" />
+          <Tabs centered onChange={handleChange} >
+            <Tab className='tabs' label="Todas as postagens" value="1"/>
+            <Tab className='tabs' label="Sobre nós" value="2" />
           </Tabs>
         </AppBar>
-        <TabPanel value="1" >
+        <TabPanel value="1" className='postagens-panel'>
           <Box justifyContent="center">
             <ListaPostagem />
           </Box>
@@ -31,7 +30,7 @@ function TabPostagem() {
             gutterBottom 
             component="h5"
             className='titulo-sobre'>
-              Sobre-nós
+              Sobre nós
             </Typography>
 
             <Typography  

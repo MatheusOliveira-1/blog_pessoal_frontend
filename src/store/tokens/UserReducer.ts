@@ -13,7 +13,7 @@ const initialState = {
 
 export const userReducer = (state: UserState = initialState, action: Action) => {
     switch(action.type){
-        case "ADD_token":{
+        case "ADD_TOKEN":{
             return { tokens: action.payload, id: state.id }
         }
 

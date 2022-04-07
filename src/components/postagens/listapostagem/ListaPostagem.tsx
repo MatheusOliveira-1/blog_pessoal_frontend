@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Postagem from '../../../models/Postagem';
 import { busca } from '../../../services/Service'
-import { Box, Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
+import { Box, Card, CardActions, CardContent, Button, Typography, Grid } from '@material-ui/core';
 import './ListaPostagem.css';
 import { useHistory } from 'react-router-dom'
 import ModalPostagem from '../modalPostagem/ModalPostagem';
@@ -14,12 +14,12 @@ function ListaPostagem() {
   const [posts, setPosts] = useState<Postagem[]>([])
   const token = useSelector<UserState, UserState['tokens']>(
     (state) => state.tokens
-)
+  )
   let history = useHistory();
 
   useEffect(() => {
     if (token == "") {
-      toast.error('Você precisa estar logado',{
+      toast.error('Você precisa estar logado', {
         position: 'top-right',
         autoClose: 2000,
         hideProgressBar: false,
@@ -28,7 +28,7 @@ function ListaPostagem() {
         draggable: false,
         theme: 'dark',
         progress: undefined
-    })
+      })
       history.push("/login")
 
     }
@@ -50,57 +50,65 @@ function ListaPostagem() {
 
   return (
     <>
-      <Box>
-        <ModalPostagem />
-      </Box>
-      {
-        posts.map(post => (
-          <Box m={2} >
-            <Card variant="outlined">
-              <CardContent>
-                <Typography color="textSecondary" gutterBottom>
-                  Postagens
-                </Typography>
-
-                <Typography variant="h5" component="h2">
-                  {post.titulo}
-                </Typography>
-
-                <Typography variant="body2" component="p">
-                  {post.texto}
-                </Typography>
-
-                <Typography variant="body2" component="p">
-                  {'Data:' + post.data}
-                </Typography>
-
-                <Typography variant="body2" component="p">
-                  {post.tema?.descricao}
-                </Typography>
-
-              </CardContent>
-              <CardActions>
-                <Box display="flex" justifyContent="center" mb={1.5}>
-                  <Link to={`/formularioPostagem/${post.id}`} className="text-decorator-none" >
-                    <Box mx={1}>
-                      <Button variant="contained" className="marginLeft" size='small' color="primary" >
-                        atualizar
-                      </Button>
-                    </Box>
-                  </Link>
-                  <Link to={`/deletarPostagem/${post.id}`} className="text-decorator-none">
-                    <Box mx={1}>
-                      <Button variant="contained" size='small' color="secondary">
-                        deletar
-                      </Button>
-                    </Box>
-                  </Link>
-                </Box>
-              </CardActions>
-            </Card>
+      <Grid container direction='row' justifyContent='center' alignItems='center' className='container-lista-postagens'>
+        <Grid xs={12}>
+          <Box className='titulo-lista-postagem'>
+            <Typography variant='h4' gutterBottom>
+              Postagens
+            </Typography>
           </Box>
-        ))
-      }
+
+          <Box className='caixa-modal'>
+            <ModalPostagem />
+          </Box>
+
+        </Grid>
+
+        {
+          posts.map(post => (
+            <Box m={12} className='caixa-cards'>
+              <Card variant="outlined" className='card-style'>
+                <CardContent>
+                  <Typography variant="h5" component="h3" className='titulo-postagem'>
+                    {post.titulo}
+                  </Typography>
+
+                  <Typography variant="body2" component="p" className='texto-postagem'>
+                    {post.texto}
+                  </Typography>
+                  <br/>
+                  <Typography variant="body2" component="p"className='data-postagem'>
+                    {post.data}
+                  </Typography>
+
+                  <Typography variant="h6" component="p"className='tema-postagem'>
+                    {post.tema?.descricao}
+                  </Typography>
+
+                </CardContent>
+                <CardActions>
+                  <Box display="flex" justifyContent="center" mb={1.5}>
+                    <Link to={`/formularioPostagem/${post.id}`} className="text-decorator-none" >
+                      <Box mx={1}>
+                        <Button variant="contained" className="btn-atualizar-postagem" size='small' color="primary" >
+                          atualizar
+                        </Button>
+                      </Box>
+                    </Link>
+                    <Link to={`/deletarPostagem/${post.id}`} className="text-decorator-none">
+                      <Box mx={1}>
+                        <Button className='btn-deletar-postagem'>
+                          deletar
+                        </Button>
+                      </Box>
+                    </Link>
+                  </Box>
+                </CardActions>
+              </Card>
+            </Box>
+          ))
+        }
+      </Grid>
     </>
   )
 }

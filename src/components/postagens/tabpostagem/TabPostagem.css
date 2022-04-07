@@ -8,15 +8,25 @@
  .background-sobre-nos{
      background-image: url(../../../assets/img/background-diverso-transparencia.svg);
      background-color: #000000;
-     background-size: 400px;
+     background-size: 50vh;
+ }
 
+ .postagens-panel{
+     padding: 0px!important;
+ }
+
+ .tabs{
+     font-weight: bold!important;
  }
 
  .titulo-sobre{
      align-items: center;
      text-align: center!important;
      font-weight: bold!important;
-     color: #00FFFF!important; 
+     color: #FF00FF!important;
+     font-weight: bold!important;
+     font-size: larger!important;
+      
      
 }
 
@@ -25,4 +35,7 @@
     text-align: center!important;
     color: #00FFFF!important;
     padding: 30px!important;
+    backdrop-filter: blur(3px);
+    border-bottom: solid 1px #00FFFF;
+    border-left: solid 1px #00FFFF;
 }

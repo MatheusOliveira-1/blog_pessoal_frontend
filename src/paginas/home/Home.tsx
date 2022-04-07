@@ -8,27 +8,25 @@ import Tema from '../../models/Tema';
 import User from '../../models/User';
 
 import './Home.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { UserState } from '../../store/tokens/UserReducer';
+import { addToken } from "../../store/tokens/Action";
 
-function Home(){
+function Home() {
 
     let history = useHistory();
-
-    const { id } = useParams<{ id: string }>()
 
     /** token = store.tokens */
     const token = useSelector<UserState, UserState['tokens']>(
         (state) => state.tokens
     )
-    const [temas, setTemas] = useState<Tema[]>([])
 
-    const [user, setUser] = useState<User>()
+    const dispatch = useDispatch()
 
     useEffect(() => {
         if (token == "") {
-            toast.error('Você precisa estar logado',{
+            toast.error('Você precisa estar logado', {
                 position: 'top-right',
                 autoClose: 2000,
                 hideProgressBar: false,
@@ -38,59 +36,111 @@ function Home(){
                 theme: 'dark',
                 progress: undefined
             })
-          history.push('/login')
+            history.push('/login')
         }
-      }, [token])
-    
-    function animaIcone(){
-       
+    }, [token])
+
+    function goLogout(){
+        dispatch(addToken(''))
+        toast.info('Usuário deslogado com sucesso!!!',{
+            position: 'top-right',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            theme: 'dark',
+            progress: undefined
+        })
+        history.push('/login')
+    }
+
+    var clique = 0
+
+    function exibeBotoes(){
+        console.log(clique)
+        console.log(botoesDireita)
+        clique += 1
+    }
+
+    var botoesDireita = 'inicio'
+
+    if(clique % 2 == 0){
+    botoesDireita = 'Exibe'
+
+    } else {
+        botoesDireita = 'nada'
     }
 
 
-    return(
+    return (
         <>
-             <Grid container direction="row" justifyContent="center" alignItems="center" className='caixa'>
+            <Grid container direction="row" justifyContent="center" alignItems="center" className='caixa'>
                 <Grid alignItems="center" item xs={12}>
                     <Box paddingX={20} >
                         <Typography variant="h3"
-                         gutterBottom color="textPrimary"
-                         component="h3" align="center" 
-                         className='titulo'>
-                            Seja bem vinde! 
-                         </Typography>
+                            gutterBottom color="textPrimary"
+                            component="h3" align="center"
+                            className='titulo'>
+                            Seja bem vinde!
+                        </Typography>
 
-                        <Typography variant="h5" 
-                        gutterBottom color="textPrimary" 
-                        component="h5" 
-                        align="center" 
-                        className='titulo'>
+                        <Typography variant="h5"
+                            gutterBottom color="textPrimary"
+                            component="h5"
+                            align="center"
+                            className='titulo'>
                             Expresse aqui os seus pensamentos e opiniões!
                         </Typography>
                     </Box>
 
-                   
-                        <Box display="flex" justifyContent="center">
+                </Grid>
 
-                            <Box>
-                                <ModalPostagem />
-                            </Box>
-
+                <Grid xs={4}>
+                    <Box className='btns-esquerda'>
+                        <Box display="flex" justifyContent="right">
                             <Link to='/postagens' className='text-decorator-none'>
-                                <Button variant="outlined" className='botao'>
-
+                                <Button variant="outlined" className='btn-ver-postagens'>
                                     Ver Postagens
-
                                 </Button>
                             </Link>
                         </Box>
-                       
-
-                </Grid>
-                <Grid item xs={12} alignItems='center' justifyContent='center'>
-                    <Box paddingX={70} className='caixa-icone'>
-                        <Box className="icone-home"></Box>
+                         <Box display="flex" justifyContent="right">
+                            <Link to='/temas' className='text-decorator-none'>
+                                <Button variant="outlined" className='btn-ver-temas'>
+                                    Ver Temas
+                                </Button>
+                            </Link>
+                        </Box>
+                        <Box display="flex" justifyContent="right">
+                                <Button variant="outlined" className='btn-logout' onClick={goLogout}>
+                                    Logout
+                                </Button>
+                        </Box>
                     </Box>
                 </Grid>
+
+                <Grid item xs={4} alignItems='center' justifyContent='center'>
+                    <Box onClick={exibeBotoes} className='icone-interact'>
+
+                    </Box>
+                </Grid>
+                <Grid xs={4}>
+                    <Box className='btns-direita'>
+                        <Box>
+                            <ModalPostagem />
+                        </Box>
+                        <Box display="flex" justifyContent="left">
+                            <Link to='/postagens' className='text-decorator-none'>
+                                <Button variant="outlined" className='btn-novo-tema'>
+                                    Novo Tema
+                                </Button>
+                            </Link>
+                        </Box>
+                    </Box>
+
+                </Grid>
+
 
                 <Grid xs={12} className='postagens'>
                     <TabPostagem />
