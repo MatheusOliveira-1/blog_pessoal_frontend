@@ -1,27 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { Box, Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
-import useLocalStorage from 'react-use-localstorage';
 
 import './ListaTema.css';
 import Tema from '../../../models/Tema';
 import { busca } from '../../../services/Service';
 import { useSelector } from 'react-redux';
-import { TokenState } from '../../../store/tokens/TokensReducer';
 import { toast } from 'react-toastify';
+import { UserState } from '../../../store/tokens/UserReducer';
 
 function ListaTema() {
 
   const [temas, setTemas] = useState<Tema[]>([])
-  const token = useSelector<TokenState, TokenState['tokens']>(
+  const token = useSelector<UserState, UserState['tokens']>(
     (state) => state.tokens
-)
+  )
   let history = useHistory();
 
 
   useEffect(() => {
     if (token == '') {
-      toast.error('Você precisa estar logado',{
+      toast.error('Você precisa estar logado', {
         position: 'top-right',
         autoClose: 2000,
         hideProgressBar: false,
@@ -30,7 +29,7 @@ function ListaTema() {
         draggable: false,
         theme: 'dark',
         progress: undefined
-    })
+      })
       history.push('/login')
     }
   }, [token])

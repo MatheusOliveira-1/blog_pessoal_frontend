@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Postagem from '../../../models/Postagem';
 import { busca } from '../../../services/Service'
 import { Box, Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
 import './ListaPostagem.css';
-import useLocalStorage from 'react-use-localstorage';
 import { useHistory } from 'react-router-dom'
 import ModalPostagem from '../modalPostagem/ModalPostagem';
-import { TokenState } from '../../../store/tokens/TokensReducer';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import { UserState } from '../../../store/tokens/UserReducer';
 
 function ListaPostagem() {
   const [posts, setPosts] = useState<Postagem[]>([])
-  const token = useSelector<TokenState, TokenState['tokens']>(
+  const token = useSelector<UserState, UserState['tokens']>(
     (state) => state.tokens
 )
   let history = useHistory();

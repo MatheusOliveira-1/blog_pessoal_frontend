@@ -1,21 +1,19 @@
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import { Container, Typography, TextField, Button, Select, InputLabel, MenuItem, FormControl, FormHelperText } from "@material-ui/core"
 import './CadastroPost.css';
 import { useHistory, useParams } from 'react-router-dom';
 import Tema from '../../../models/Tema';
-import useLocalStorage from 'react-use-localstorage';
 import Postagem from '../../../models/Postagem';
-import { busca, buscaId, post, put } from '../../../services/Service';
-import ModalPostagem from '../modalPostagem/ModalPostagem';
+import { buscaId, post, put } from '../../../services/Service';
 import { useSelector } from 'react-redux';
-import { TokenState } from '../../../store/tokens/TokensReducer';
 import { toast } from 'react-toastify';
+import { UserState } from '../../../store/tokens/UserReducer';
 
 function CadastroPost() {
     
     let history = useHistory();
     const { id } = useParams<{ id: string }>()
-    const token = useSelector<TokenState, TokenState['tokens']>(
+    const token = useSelector<UserState, UserState['tokens']>(
         (state) => state.tokens
     )
     const [temas, setTemas] = useState<Tema[]>([])
@@ -72,7 +70,7 @@ function CadastroPost() {
     }
 
     async function findByIdPostagem(id: string) {
-        await buscaId(`postagens/${id}`, setPostagem, {
+        await buscaId   (`postagens/${id}`, setPostagem, {
             headers: {
                 'Authorization': token
             }

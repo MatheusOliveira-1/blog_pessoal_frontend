@@ -5,12 +5,12 @@ import { Link, useHistory } from "react-router-dom";
 import './Navbar.css'
 import { useDispatch, useSelector } from "react-redux";
 import { addToken } from "../../../store/tokens/Action";
-import { TokenState } from "../../../store/tokens/TokensReducer";
 import { toast } from "react-toastify";
+import { UserState } from "../../../store/tokens/UserReducer";
 
 function Navbar() {
 
-    const token = useSelector<TokenState, TokenState['tokens']>(
+    const token = useSelector<UserState, UserState['tokens']>(
         (state) => state.tokens
     )
 
@@ -39,10 +39,7 @@ function Navbar() {
         navbarComponent =
         <AppBar position="static" className="navBar-style">
                 <Toolbar variant="dense">
-                        <Box>
-                            <Typography variant="h5" className="cursor">
-                                Blog Pessoal
-                            </Typography>
+                        <Box mx={1} className="logo">
                         </Box>
 
                         <Box display="flex" justifyContent="start">

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Box, Button, Grid, Typography } from '@material-ui/core';
 import { Link, useHistory, useParams } from 'react-router-dom';
 
@@ -9,8 +9,8 @@ import User from '../../models/User';
 
 import './Home.css';
 import { useSelector } from 'react-redux';
-import { TokenState } from '../../store/tokens/TokensReducer';
 import { toast } from 'react-toastify';
+import { UserState } from '../../store/tokens/UserReducer';
 
 function Home(){
 
@@ -19,7 +19,7 @@ function Home(){
     const { id } = useParams<{ id: string }>()
 
     /** token = store.tokens */
-    const token = useSelector<TokenState, TokenState['tokens']>(
+    const token = useSelector<UserState, UserState['tokens']>(
         (state) => state.tokens
     )
     const [temas, setTemas] = useState<Tema[]>([])

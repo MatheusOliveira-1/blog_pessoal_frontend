@@ -13,3 +13,12 @@
     font-size: 30px;
 
 }
+
+.logo{
+    background-image: url(../../../assets/img/logo.svg);
+    min-height: 10vh;
+    width: 41vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; 
+}

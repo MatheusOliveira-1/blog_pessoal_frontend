@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Box, Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
 import './DeletarTema.css';
 import { useHistory, useParams } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
 import { buscaId, deleteId } from '../../../services/Service';
 import Tema from '../../../models/Tema';
 import { useSelector } from 'react-redux';
-import { TokenState } from '../../../store/tokens/TokensReducer';
 import { toast } from 'react-toastify';
+import { UserState } from '../../../store/tokens/UserReducer';
 
 
 function DeletarTema() {
 
   let history = useHistory();
   const { id } = useParams<{ id: string }>()
-  const token = useSelector<TokenState, TokenState['tokens']>(
+  const token = useSelector<UserState, UserState['tokens']>(
     (state) => state.tokens
   )
   const [tema, setTema] = useState<Tema>()

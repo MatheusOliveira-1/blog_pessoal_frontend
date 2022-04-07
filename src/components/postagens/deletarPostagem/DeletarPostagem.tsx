@@ -7,12 +7,16 @@ import { useHistory, useParams } from 'react-router-dom';
 import Postagem from '../../../models/Postagem';
 import './DeletarPostagem.css';
 import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
+import { UserState } from '../../../store/tokens/UserReducer';
 
 function DeletarPostagem() {
 
   let history = useHistory();
   const { id } = useParams<{ id: string }>()
-  const [token, setToken] = useLocalStorage('token')
+  const token = useSelector<UserState, UserState['tokens']>(
+    (state) => state.tokens
+)
   const [post, setPosts] = useState<Postagem>()
 
   useEffect(() => {
