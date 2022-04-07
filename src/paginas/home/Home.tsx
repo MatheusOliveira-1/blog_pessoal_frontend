@@ -40,9 +40,9 @@ function Home() {
         }
     }, [token])
 
-    function goLogout(){
+    function goLogout() {
         dispatch(addToken(''))
-        toast.info('Usuário deslogado com sucesso!!!',{
+        toast.info('Usuário deslogado com sucesso!!!', {
             position: 'top-right',
             autoClose: 2000,
             hideProgressBar: false,
@@ -56,21 +56,49 @@ function Home() {
     }
 
     var clique = 0
+    var botoesEsquerda
 
-    function exibeBotoes(){
-        console.log(clique)
-        console.log(botoesDireita)
+    function exibeBotoes() {
+        
+        
         clique += 1
+
+        if (clique % 2 === 0) {
+            botoesEsquerda = 'nada'
+
+        } else {
+            botoesEsquerda = 
+            <Box className='btns-esquerda'>
+                        <Box display="flex" justifyContent="right">
+                            <Link to='/postagens' className='text-decorator-none'>
+                                <Button variant="outlined" className='btn-ver-postagens'>
+                                    Ver Postagens
+                                </Button>
+                            </Link>
+                        </Box>
+                        <Box display="flex" justifyContent="right">
+                            <Link to='/temas' className='text-decorator-none'>
+                                <Button variant="outlined" className='btn-ver-temas'>
+                                    Ver Temas
+                                </Button>
+                            </Link>
+                        </Box>
+                        <Box display="flex" justifyContent="right">
+                            <Button variant="outlined" className='btn-logout' onClick={goLogout}>
+                                Logout
+                            </Button>
+                        </Box>
+                    </Box>
+        }
+
+        console.log('numero de cliques ' + clique)
+        console.log('% ' + clique % 2)
+        console.log('Deve renderizar ' + botoesEsquerda)
+        console.log(botoesEsquerda)
+
     }
 
-    var botoesDireita = 'inicio'
 
-    if(clique % 2 == 0){
-    botoesDireita = 'Exibe'
-
-    } else {
-        botoesDireita = 'nada'
-    }
 
 
     return (
@@ -97,27 +125,7 @@ function Home() {
                 </Grid>
 
                 <Grid xs={4}>
-                    <Box className='btns-esquerda'>
-                        <Box display="flex" justifyContent="right">
-                            <Link to='/postagens' className='text-decorator-none'>
-                                <Button variant="outlined" className='btn-ver-postagens'>
-                                    Ver Postagens
-                                </Button>
-                            </Link>
-                        </Box>
-                         <Box display="flex" justifyContent="right">
-                            <Link to='/temas' className='text-decorator-none'>
-                                <Button variant="outlined" className='btn-ver-temas'>
-                                    Ver Temas
-                                </Button>
-                            </Link>
-                        </Box>
-                        <Box display="flex" justifyContent="right">
-                                <Button variant="outlined" className='btn-logout' onClick={goLogout}>
-                                    Logout
-                                </Button>
-                        </Box>
-                    </Box>
+                    {botoesEsquerda}
                 </Grid>
 
                 <Grid item xs={4} alignItems='center' justifyContent='center'>

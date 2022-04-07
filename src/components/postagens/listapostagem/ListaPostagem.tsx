@@ -57,7 +57,7 @@ function ListaPostagem() {
               Postagens
             </Typography>
           </Box>
-
+          
           <Box className='caixa-modal'>
             <ModalPostagem />
           </Box>
