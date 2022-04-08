@@ -1,26 +1,3 @@
-.btn-novo-tema{
-    border-top:solid 5px #FFaaFF!important;
-    border-left:solid 5px #FF00aa!important;
-    background-color: #FF00FF!important;
-    border-radius: 10px!important; 
-    color: #000000!important;
-    font-weight: bold!important;
-    text-decoration: none!important;
-    margin-top: 5px!important;
-    margin-bottom: 5px!important;
-}
-
-.btn-novo-tema:hover{
-    border-top:solid 0px #ff0000!important;
-    border-left:solid 0px #ff0000!important;
-    background-color: #FF00FF!important;
-    border-radius: 10px!important; 
-    color: #000000!important;
-    font-weight: bold!important;
-    text-decoration: none!important;
-    
-}
-
 .btn-logout{
     border-top:solid 5px #FFaaFF!important;
     border-right:solid 5px #FF00aa!important;
@@ -105,14 +82,10 @@
 }
 
 .btns-direita{
-    background-color: #ff0000!important;
-    border: solid 2px white;
     min-height: 10vh!important;
 }
 
 .btns-esquerda{
-    background-color: #26ff00!important;
-    border: solid 2px white;
     min-height: 10vh!important;
 }
 
@@ -122,15 +95,29 @@
 }
 
 .icone-interact{
+    transition: 0.5s;
     background-image: url(../../assets/img/icone-principal.svg);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    background-color: #00FFFF!important;
-    border: solid 2px white;
+    border: #00bc09 2px solid;
+    border-radius: 120px;
     min-height: 35vh!important;
     
 }
+
+.icone-interact2{
+    transition: 0.5s;
+    background-image: url(../../assets/img/icone-principal.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    border: #00bc09 2px solid;
+    border-radius: 120px;
+    min-height: 60vh!important;
+    
+}
+
 
 .postagens{
     background-color: #ffffff;

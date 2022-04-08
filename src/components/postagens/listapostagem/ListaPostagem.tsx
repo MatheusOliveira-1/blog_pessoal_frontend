@@ -72,13 +72,16 @@ function ListaPostagem() {
                   <Typography variant="h5" component="h3" className='titulo-postagem'>
                     {post.titulo}
                   </Typography>
-
+                  <br/>
                   <Typography variant="body2" component="p" className='texto-postagem'>
                     {post.texto}
                   </Typography>
                   <br/>
                   <Typography variant="body2" component="p"className='data-postagem'>
-                    {post.data}
+                    {post.data.substring(8,10) + '/' +
+                     post.data.substring(5,7) + '/' +
+                     post.data.substring(0,4) + ' às ' +
+                     post.data.substring(11,19)}
                   </Typography>
 
                   <Typography variant="h6" component="p"className='tema-postagem'>

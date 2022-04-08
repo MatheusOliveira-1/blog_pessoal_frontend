@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { UserState } from '../../store/tokens/UserReducer';
 import { addToken } from "../../store/tokens/Action";
+import ModalTema from '../../components/temas/modalTema/ModalTema';
 
 function Home() {
 
@@ -23,6 +24,11 @@ function Home() {
     )
 
     const dispatch = useDispatch()
+
+    const [exibeDireita, setExibeDireita] = useState()
+    const [exibeEsquerda, setExibeEsquerda] = useState()
+    const [cont, setCont] = useState(0)
+    const [animaIcon, setAnimaIcon] = useState('icone-interact')
 
     useEffect(() => {
         if (token == "") {
@@ -54,53 +60,61 @@ function Home() {
         })
         history.push('/login')
     }
+    
 
-    var clique = 0
-    var botoesEsquerda
-
-    function exibeBotoes() {
-        
-        
-        clique += 1
-
-        if (clique % 2 === 0) {
-            botoesEsquerda = 'nada'
-
+    function exibirBotoes(){
+        setCont(cont + 1)
+        if(cont % 2 === 0){
+        setAnimaIcon('icone-interact2')
+        setExibeDireita(botoesDireita)
+        setExibeEsquerda(botoesEsquerda)
+       
         } else {
-            botoesEsquerda = 
-            <Box className='btns-esquerda'>
-                        <Box display="flex" justifyContent="right">
-                            <Link to='/postagens' className='text-decorator-none'>
-                                <Button variant="outlined" className='btn-ver-postagens'>
-                                    Ver Postagens
-                                </Button>
-                            </Link>
-                        </Box>
-                        <Box display="flex" justifyContent="right">
-                            <Link to='/temas' className='text-decorator-none'>
-                                <Button variant="outlined" className='btn-ver-temas'>
-                                    Ver Temas
-                                </Button>
-                            </Link>
-                        </Box>
-                        <Box display="flex" justifyContent="right">
-                            <Button variant="outlined" className='btn-logout' onClick={goLogout}>
-                                Logout
-                            </Button>
-                        </Box>
-                    </Box>
+        setAnimaIcon('icone-interact')
+        setExibeDireita(undefined)
+        setExibeEsquerda(undefined)
         }
-
-        console.log('numero de cliques ' + clique)
-        console.log('% ' + clique % 2)
-        console.log('Deve renderizar ' + botoesEsquerda)
-        console.log(botoesEsquerda)
-
     }
+    var botoesDireita: any
+        botoesDireita =
+        <Box className='btns-direita'>
+        <Box>
+            <ModalPostagem />
+        </Box>
+        <Box display="flex" justifyContent="left">
+            <Box>
+                <ModalTema />
+            </Box>
+        </Box>
+    </Box>
 
 
+    var botoesEsquerda: any
+        botoesEsquerda = 
+                <Box className='btns-esquerda'>
+                    <Box display="flex" justifyContent="right">
+                        <Link to='/postagens' className='text-decorator-none'>
+                            <Button variant="outlined" className='btn-ver-postagens'>
+                                Ver Postagens
+                            </Button>
+                        </Link>
+                    </Box>
+                    <Box display="flex" justifyContent="right">
+                        <Link to='/temas' className='text-decorator-none'>
+                            <Button variant="outlined" className='btn-ver-temas'>
+                                Ver Temas
+                            </Button>
+                        </Link>
+                    </Box>
+                    <Box display="flex" justifyContent="right">
+                        <Button variant="outlined" className='btn-logout' onClick={goLogout}>
+                            Logout
+                        </Button>
+                    </Box>
+                </Box>
 
 
+    
     return (
         <>
             <Grid container direction="row" justifyContent="center" alignItems="center" className='caixa'>
@@ -125,34 +139,23 @@ function Home() {
                 </Grid>
 
                 <Grid xs={4}>
-                    {botoesEsquerda}
+                    {exibeEsquerda}
                 </Grid>
 
                 <Grid item xs={4} alignItems='center' justifyContent='center'>
-                    <Box onClick={exibeBotoes} className='icone-interact'>
+                    <Box onClick={exibirBotoes} className={animaIcon}>
 
                     </Box>
                 </Grid>
+                 
                 <Grid xs={4}>
-                    <Box className='btns-direita'>
-                        <Box>
-                            <ModalPostagem />
-                        </Box>
-                        <Box display="flex" justifyContent="left">
-                            <Link to='/postagens' className='text-decorator-none'>
-                                <Button variant="outlined" className='btn-novo-tema'>
-                                    Novo Tema
-                                </Button>
-                            </Link>
-                        </Box>
-                    </Box>
-
+                   {exibeDireita}
                 </Grid>
 
 
-                <Grid xs={12} className='postagens'>
+                {/* <Grid xs={12} className='postagens'>
                     <TabPostagem />
-                </Grid>
+                </Grid> */}
             </Grid>
         </>
     );

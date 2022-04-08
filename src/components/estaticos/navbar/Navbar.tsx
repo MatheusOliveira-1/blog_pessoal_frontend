@@ -68,16 +68,8 @@ function Navbar() {
                                 </Box>
                             </Link>
 
-                            <Link to='/formularioTema' className='text-decorator-none'>
-                                <Box mx={1} >
-                                    <Typography variant="h6" className="cursor">
-                                        Cadastrar Tema
-                                    </Typography>
-                                </Box>
-                            </Link>
-
                             <Box mx={1} onClick={goLogout}>
-                                <Typography variant="h6" className="cursor">
+                                <Typography variant="h6" className="cursor" >
                                     Logout
                                 </Typography>
                             </Box>

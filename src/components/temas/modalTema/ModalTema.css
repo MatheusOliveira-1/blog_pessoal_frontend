@@ -2,28 +2,26 @@
     cursor: pointer;
 }
 
-.btnModal{
-    border-top:solid 5px #00FFaa!important;
-    border-left:solid 5px #029e0a!important;
-    background-color: #00FF71!important;
-    border-top-right-radius: 10px!important;
-    border-bottom-right-radius: 10px!important;  
-    border-top-left-radius: 10px!important;
-    border-bottom-left-radius: 10px!important; 
+.btn-novo-tema{
+    border-top:solid 5px #FFaaFF!important;
+    border-left:solid 5px #FF00aa!important;
+    background-color: #FF00FF!important;
+    border-radius: 10px!important; 
     color: #000000!important;
     font-weight: bold!important;
     text-decoration: none!important;
+    margin-top: 5px!important;
+    margin-bottom: 5px!important;
 }
 
-.btnModal:hover{
-    border-top:solid 0px #029e0a!important;
-    border-left:solid 0px #029e0a!important;
-    background-color: #00FF71!important;
-    border-top-right-radius: 10px!important;
-    border-bottom-right-radius: 10px!important;  
-    border-top-left-radius: 10px!important;
-    border-bottom-left-radius: 10px!important; 
+.btn-novo-tema:hover{
+    border-top:solid 0px #ff0000!important;
+    border-left:solid 0px #ff0000!important;
+    background-color: #FF00FF!important;
+    border-radius: 10px!important; 
     color: #000000!important;
     font-weight: bold!important;
     text-decoration: none!important;
+    
 }
+
