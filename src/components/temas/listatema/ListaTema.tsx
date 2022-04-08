@@ -16,6 +16,9 @@ function ListaTema() {
   const token = useSelector<UserState, UserState['tokens']>(
     (state) => state.tokens
   )
+
+  const [atualPage, setAtualPage] = useState(window.location.href.toString())
+  
   let history = useHistory();
 
 

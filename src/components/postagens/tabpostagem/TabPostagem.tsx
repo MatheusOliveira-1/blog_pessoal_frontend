@@ -31,13 +31,22 @@ function TabPostagem() {
             gutterBottom 
             variant='h5'
             className='titulo-sobre'>
-              Sobre nós
+              Blog Matheus Oliveira Dev
             </Typography>
 
             <Typography  
             gutterBottom
             className='texto-sobre'>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos ut eveniet natus totam et, voluptate dicta tempore alias, odio nobis non eius cupiditate minima inventore pariatur! Ipsum itaque consectetur voluptatibus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo velit consequuntur suscipit fugiat, nam quis quod quaerat veritatis et, vel ratione beatae, facere neque! Quo animi porro voluptate saepe deleniti? Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore adipisci, officia aut quidem dolorum deserunt iure dolorem doloribus velit nobis quas consequatur at ullam odit, nesciunt est nulla nihil excepturi!
+               Um espaço para o compartilhamento de ideias, onde o conhecimento pode
+               ser acessado e dividido por todes!
+               Este projeto foi criado inicialmente como parte do terceiro módulo do curso
+               de formação de Pessoa Desenvolvedora Java Full Stack da Generation Brasil.
+               Seu back-end foi construído utilizando o SpringBoot Framework em conjunto com
+               o banco de dados MySql, que foi posteriormente substituído pelo PostGre para 
+               que fossem atendidas as demandas da plataforma Heroku. O front-ende foi programado
+               utilizando React, com base em Typescript e estilização em CSS. Também foram de grande
+               importância as bibliotecas Material UI (MUI) e Redux para manuseio de elementos visuais
+               e dados.
             </Typography>
           </Box>
            

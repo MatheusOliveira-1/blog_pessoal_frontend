@@ -42,7 +42,7 @@ function Navbar() {
                         <Box mx={1} className="logo">
                         </Box>
 
-                        <Box display="flex" justifyContent="start">
+                        <Box className="caixa-nav">
                             
                             <Link to='/home' className='text-decorator-none'>
                                 <Box mx={1} >
@@ -66,16 +66,13 @@ function Navbar() {
                                         Temas
                                     </Typography>
                                 </Box>
-                            </Link>
-
-                            <Box mx={1} onClick={goLogout}>
-                                <Typography variant="h6" className="cursor" >
+                            </Link>                                  
+                        </Box>
+                        <Box mx={1} onClick={goLogout} className="logout">
+                                <Typography variant="h6" className="cursor logout" >
                                     Logout
                                 </Typography>
-                            </Box>
-                            
-                        </Box>
-
+                            </Box> 
                 </Toolbar>
             </AppBar>
     }

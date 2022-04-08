@@ -6,6 +6,12 @@
     background-image: linear-gradient(to right, #00FFFF,#00FFFFba);
 }
 
+.caixa-nav{
+    display: flex;
+    justify-content: flex-start;
+
+}
+
 .cursor{
     cursor: pointer!important;
     color: #000000!important;
@@ -23,3 +29,11 @@
     background-position: center; 
     cursor: pointer!important;
 }
+
+.logout{
+    align-self: right;
+     text-align: right;
+     justify-content: right;
+
+ }
+

@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Box, Button, Grid, Typography } from '@material-ui/core';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import TabPostagem from '../../components/postagens/tabpostagem/TabPostagem';
 import ModalPostagem from '../../components/postagens/modalPostagem/ModalPostagem';
-import Tema from '../../models/Tema';
-import User from '../../models/User';
 
 import './Home.css';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,6 +11,7 @@ import { toast } from 'react-toastify';
 import { UserState } from '../../store/tokens/UserReducer';
 import { addToken } from "../../store/tokens/Action";
 import ModalTema from '../../components/temas/modalTema/ModalTema';
+import setAtualPage from "../../components/estaticos/navbar/Navbar"
 
 function Home() {
 
@@ -60,61 +59,62 @@ function Home() {
         })
         history.push('/login')
     }
-    
 
-    function exibirBotoes(){
+    var atualPage = window.location.href.toString()
+    function exibirBotoes() {
+        console.log('url: ' + atualPage)
         setCont(cont + 1)
-        if(cont % 2 === 0){
-        setAnimaIcon('icone-interact2')
-        setExibeDireita(botoesDireita)
-        setExibeEsquerda(botoesEsquerda)
-       
+        if (cont % 2 === 0) {
+            setAnimaIcon('icone-interact2')
+            setExibeDireita(botoesDireita)
+            setExibeEsquerda(botoesEsquerda)
+
         } else {
-        setAnimaIcon('icone-interact')
-        setExibeDireita(undefined)
-        setExibeEsquerda(undefined)
+            setAnimaIcon('icone-interact')
+            setExibeDireita(undefined)
+            setExibeEsquerda(undefined)
         }
     }
     var botoesDireita: any
-        botoesDireita =
+    botoesDireita =
         <Box className='btns-direita'>
-        <Box>
-            <ModalPostagem />
-        </Box>
-        <Box display="flex" justifyContent="left">
             <Box>
-                <ModalTema />
+                <ModalPostagem />
+            </Box>
+            <Box display="flex" justifyContent="left">
+                <Box>
+                    <ModalTema />
+                </Box>
             </Box>
         </Box>
-    </Box>
 
 
     var botoesEsquerda: any
-        botoesEsquerda = 
-                <Box className='btns-esquerda'>
-                    <Box display="flex" justifyContent="right">
-                        <Link to='/postagens' className='text-decorator-none'>
-                            <Button variant="outlined" className='btn-ver-postagens'>
-                                Ver Postagens
-                            </Button>
-                        </Link>
-                    </Box>
-                    <Box display="flex" justifyContent="right">
-                        <Link to='/temas' className='text-decorator-none'>
-                            <Button variant="outlined" className='btn-ver-temas'>
-                                Ver Temas
-                            </Button>
-                        </Link>
-                    </Box>
-                    <Box display="flex" justifyContent="right">
-                        <Button variant="outlined" className='btn-logout' onClick={goLogout}>
-                            Logout
-                        </Button>
-                    </Box>
-                </Box>
+    botoesEsquerda =
+        <Box className='btns-esquerda'>
+            <Box display="flex" justifyContent="right">
+                <Link to='/postagens' className='text-decorator-none'>
+                    <Button variant="outlined" className='btn-ver-postagens'>
+                        Ver Postagens
+                    </Button>
+                </Link>
+            </Box>
+            <Box display="flex" justifyContent="right">
+                <Link to='/temas' className='text-decorator-none'>
+                    <Button variant="outlined" className='btn-ver-temas'>
+                        Ver Temas
+                    </Button>
+                </Link>
+            </Box>
+            <Box display="flex" justifyContent="right">
+                <Button variant="outlined" className='btn-logout' onClick={goLogout}>
+                    Logout
+                </Button>
+            </Box>
+        </Box>
 
 
-    
+
     return (
         <>
             <Grid container direction="row" justifyContent="center" alignItems="center" className='caixa'>
@@ -128,34 +128,43 @@ function Home() {
                         </Typography>
 
                         <Typography variant="h5"
-                            gutterBottom color="textPrimary"
+                            gutterBottom
                             component="h5"
                             align="center"
                             className='titulo'>
-                            Expresse aqui os seus pensamentos e opiniões!
+                            Um espaço seguro para compartilhar conhecimento e novas ideias!
+                        </Typography>
+
+                        <Typography variant="h5"
+                            gutterBottom
+                            component="h5"
+                            align="center"
+                            className='titulo'>
+                            Clique no ícone abaixo para expandir sua mente!
                         </Typography>
                     </Box>
-
                 </Grid>
 
-                <Grid xs={4}>
+                <Grid xs={5}>
                     {exibeEsquerda}
                 </Grid>
 
-                <Grid item xs={4} alignItems='center' justifyContent='center'>
+                <Grid item xs={2} alignItems='center' justifyContent='center'>
+
                     <Box onClick={exibirBotoes} className={animaIcon}>
 
                     </Box>
+
                 </Grid>
-                 
-                <Grid xs={4}>
-                   {exibeDireita}
+
+                <Grid xs={5}>
+                    {exibeDireita}
                 </Grid>
 
 
-                {/* <Grid xs={12} className='postagens'>
+                <Grid xs={12} className='postagens'>
                     <TabPostagem />
-                </Grid> */}
+                </Grid>
             </Grid>
         </>
     );

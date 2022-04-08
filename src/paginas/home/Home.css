@@ -100,9 +100,11 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    border: #00bc09 2px solid;
+    /* border: #00bc09 2px solid; */
     border-radius: 120px;
-    min-height: 35vh!important;
+    min-height: 15vh!important;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
     
 }
 
@@ -112,8 +114,8 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    border: #00bc09 2px solid;
-    border-radius: 120px;
+    /* border: #00bc09 2px solid; */
+    border-radius: 360px!important;
     min-height: 60vh!important;
     
 }
