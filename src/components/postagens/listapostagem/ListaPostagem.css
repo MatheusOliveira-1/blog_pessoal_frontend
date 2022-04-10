@@ -53,7 +53,7 @@
     font-weight: bold!important;
     text-decoration: none!important;
     height: 6vh!important;
-
+    
 }
 
 .caixa-modal{
@@ -61,24 +61,21 @@
     text-align: center;
 }
 
-.caixa-cards{
-    margin-top: 10px!important;
-    margin-bottom: 10px!important;   
-}
-
-.card-style{
-    backdrop-filter: blur(6px);
-    background-color: transparent!important;
-    width: 100%;
-    border-left: solid 1px #00FFFF!important;
-    border-bottom: solid 1px #00FFFF!important;
-}
-
 .container-lista-postagens{
     background-image: url(../../../assets/img/background-diverso-transparencia.svg);
     background-color: #000000;
     min-height: calc(90vh - 180px);
+
 }
+
+.glass-lista-postagem{
+    backdrop-filter: blur(6px)!important;
+    width: 90vw!important;
+    background-color: transparent!important;
+    border-left: solid 1px #00FFFF!important;
+    border-bottom: solid 1px #00FFFF!important;
+}
+
 
 .data-postagem{
     color: #00FF71;

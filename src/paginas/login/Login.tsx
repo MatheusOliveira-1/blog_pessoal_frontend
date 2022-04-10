@@ -109,7 +109,7 @@ function Login() {
                                 onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
                                 id='usuario'
                                 label='usuário'
-                                variant='outlined'
+                                variant='filled'
                                 name='usuario'
                                 margin="normal"
                                 className="textfields-login"
@@ -120,7 +120,7 @@ function Login() {
                                 onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
                                 id='senha'
                                 label='senha'
-                                variant='outlined'
+                                variant='filled'
                                 name='senha'
                                 margin='normal'
                                 type='password'

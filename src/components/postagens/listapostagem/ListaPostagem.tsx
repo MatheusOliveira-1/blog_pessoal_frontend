@@ -70,7 +70,7 @@ function ListaPostagem() {
         {
           posts.map(post => (
             <Box m={12} className='caixa-cards'>
-              <Card variant="outlined" className='card-style'>
+              <Card variant="outlined" className='glass-lista-postagem'>
                 <CardContent>
                   <Typography variant="h5" component="h3" className='titulo-postagem'>
                     {post.titulo}

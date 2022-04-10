@@ -5,6 +5,7 @@ import {Button,Box } from "@material-ui/core"
 import CloseIcon from '@material-ui/icons/Close';
 import './ModalPostagem.css';
 import CadastroPost from '../cadastroPost/CadastroPost';
+import fundo from '../../../assets/img/background-diverso-transparencia.svg'
 
 
 function getModalStyle() {
@@ -23,8 +24,11 @@ const useStyles = makeStyles((theme: Theme) =>
     paper: {
       position: 'absolute',
       width: 400,
-      backgroundColor: theme.palette.background.paper,
-      border: '2px solid #000',
+      backgroundColor: '#000000',
+      backgroundImage: `url(${fundo})`,
+      borderRadius: '6px',
+      backgroundSize: '100%',
+      border: '2px solid #00ffff',
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
     },
@@ -46,7 +50,7 @@ function ModalPostagem () {
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <Box display="flex" justifyContent="flex-end" className="cursor">
+      <Box display="flex" justifyContent="flex-end" className="close">
         <CloseIcon onClick={handleClose}/>
       
       </Box>

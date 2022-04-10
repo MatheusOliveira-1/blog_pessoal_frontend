@@ -91,23 +91,23 @@ function Home() {
 
     var botoesEsquerda: any
     botoesEsquerda =
-        <Box className='btns-esquerda'>
+        <Box>
             <Box display="flex" justifyContent="right">
                 <Link to='/postagens' className='text-decorator-none'>
-                    <Button variant="outlined" className='btn-ver-postagens'>
+                    <Button variant="outlined" className='btn-ver-postagens btns-left'>
                         Ver Postagens
                     </Button>
                 </Link>
             </Box>
             <Box display="flex" justifyContent="right">
                 <Link to='/temas' className='text-decorator-none'>
-                    <Button variant="outlined" className='btn-ver-temas'>
+                    <Button variant="outlined" className='btn-ver-temas btns-left'>
                         Ver Temas
                     </Button>
                 </Link>
             </Box>
             <Box display="flex" justifyContent="right">
-                <Button variant="outlined" className='btn-logout' onClick={goLogout}>
+                <Button variant="outlined" className='btn-logout btns-left'  onClick={goLogout}>
                     Logout
                 </Button>
             </Box>

@@ -1,4 +1,63 @@
-.topo{
-    margin-top: 200px;
+.btn-finalizar{
+    border-top:solid 5px #00FFaa!important;
+    border-left:solid 5px #029e0a!important;
+    background-color: #00FF71!important;
+    border-top-right-radius: 10px!important;
+    border-bottom-right-radius: 10px!important;  
+    border-top-left-radius: 10px!important;
+    border-bottom-left-radius: 10px!important; 
+    color: #000000!important;
+    font-weight: bold!important;
+    height: 6vh!important;
+    margin-top: 2vh!important;
+    text-decoration: none!important;
+    width: 10vw!important;
 }
+
+.btn-finalizar:hover{
+    border-top:solid 0px #029e0a!important;
+    border-left:solid 0px #029e0a!important;
+    background-color: #00FF71!important;
+    border-top-right-radius: 10px!important;
+    border-bottom-right-radius: 10px!important;  
+    border-top-left-radius: 10px!important;
+    border-bottom-left-radius: 10px!important; 
+    color: #000000!important;
+    font-weight: bold!important;
+    text-decoration: none!important;
+}
+
+.titulo-cad-postagem{
+    color: #00FFFF!important;
+    font-weight: bold!important;
+    margin: 1%!important;
+}
+
+.container{
+    width: 100%!important;
+    backdrop-filter: blur(6px);
+    background-color: transparent!important;
+}
+
+.textfiels-cad-postagem{
+    color: #000000!important;
+    background-color: #ffffff!important;
+    border-radius: 6px!important;
+}
+
+.selector-label{
+    color: #00FFFF!important;
+}
+
+
+.input-label{
+    color: #00FFFF!important;
+    font-size: 12px!important;
+}
+
+.MuiFormLabel-root{
+    color:#000000!important
+}
+
+
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AppBar, Box, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Box, Grid, Toolbar, Typography } from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
 
 import './Navbar.css'
@@ -15,12 +15,12 @@ function Navbar() {
     )
 
     const dispatch = useDispatch()
-    
+
     let history = useHistory()
 
-    function goLogout(){
+    function goLogout() {
         dispatch(addToken(''))
-        toast.info('Usuário deslogado com sucesso!!!',{
+        toast.info('Usuário deslogado com sucesso!!!', {
             position: 'top-right',
             autoClose: 2000,
             hideProgressBar: false,
@@ -35,51 +35,59 @@ function Navbar() {
 
     var navbarComponent
 
-    if(token !== ""){
+    if (token !== "") {
         navbarComponent =
-        <AppBar position="static" className="navBar-style">
+            <AppBar position="static" className="navBar-style">
                 <Toolbar variant="dense">
-                        <Box mx={1} className="logo">
-                        </Box>
-
-                        <Box className="caixa-nav">
-                            
-                            <Link to='/home' className='text-decorator-none'>
-                                <Box mx={1} >
-                                <Typography variant="h6" className="cursor">
-                                    Home
-                                </Typography>
+                    <Grid container direction="row" alignItems="center">
+                        <Grid md={11}>
+                            <Box className="caixa-nav">
+                                <Box mx={1} className="logo">
                                 </Box>
-                            </Link>
 
-                            <Link to='/postagens' className='text-decorator-none'>
-                                <Box mx={1}>
-                                    <Typography variant="h6" className="cursor">
-                                        Postagens
+                                <Link to='/home' className='text-decorator-none'>
+                                    <Box mx={1} >
+                                        <Typography variant="h6" className="cursor-navbar">
+                                            Home
+                                        </Typography>
+                                    </Box>
+                                </Link>
+
+                                <Link to='/postagens' className='text-decorator-none'>
+                                    <Box mx={1}>
+                                        <Typography variant="h6" className="cursor-navbar">
+                                            Postagens
+                                        </Typography>
+                                    </Box>
+                                </Link>
+
+                                <Link to='/temas' className='text-decorator-none'>
+                                    <Box mx={1}>
+                                        <Typography variant="h6" className="cursor-navbar">
+                                            Temas
+                                        </Typography>
+                                    </Box>
+                                </Link>
+                            </Box>
+                        </Grid>
+                        <Grid md={1}>
+                            <Box justifyContent="left" alignItems='center'>
+                                <Box mx={1} onClick={goLogout}>
+                                    <Typography variant="h6" className="cursor-navbar" >
+                                        Logout
                                     </Typography>
                                 </Box>
-                            </Link>
-                            
-                            <Link to='/temas' className='text-decorator-none'>
-                                <Box mx={1}>
-                                    <Typography variant="h6" className="cursor">
-                                        Temas
-                                    </Typography>
-                                </Box>
-                            </Link>                                  
-                        </Box>
-                        <Box mx={1} onClick={goLogout} className="logout">
-                                <Typography variant="h6" className="cursor logout" >
-                                    Logout
-                                </Typography>
-                            </Box> 
+                            </Box>
+                        </Grid>
+                    </Grid>
+
                 </Toolbar>
             </AppBar>
     }
 
     return (
         <>
-            { navbarComponent }
+            {navbarComponent}
         </>
     )
 }

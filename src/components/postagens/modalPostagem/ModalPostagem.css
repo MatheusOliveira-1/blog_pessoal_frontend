@@ -7,6 +7,8 @@
     border-top-left-radius: 10px!important;
     border-bottom-left-radius: 10px!important; 
     color: #000000!important;
+    margin-top: 5px!important;
+    margin-bottom: 5px!important;
     font-weight: bold!important;
     text-decoration: none!important;
 }
@@ -20,9 +22,15 @@
     border-top-left-radius: 10px!important;
     border-bottom-left-radius: 10px!important; 
     color: #000000!important;
+    margin-top: 5px!important;
+    margin-bottom: 5px!important;
     font-weight: bold!important;
     text-decoration: none!important;
 }
 .cursor{
     cursor: pointer;
+}
+
+.close{
+    color: #00ffff;
 }

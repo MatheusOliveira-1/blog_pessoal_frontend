@@ -1,23 +1,16 @@
-.text-decorator-none{
-    text-decoration: none;
-}
-
-.navBar-style{
-    background-image: linear-gradient(to right, #00FFFF,#00FFFFba);
-}
-
 .caixa-nav{
     display: flex;
     justify-content: flex-start;
-
+    align-items: center;
+    
 }
 
-.cursor{
+.cursor-navbar{
     cursor: pointer!important;
-    color: #000000!important;
+    color: #00ffff!important;
     font-weight: bold!important;
-    font-size: 30px;
-
+    font-size: 20px!important;
+    
 }
 
 .logo{
@@ -30,10 +23,9 @@
     cursor: pointer!important;
 }
 
-.logout{
-    align-self: right;
-     text-align: right;
-     justify-content: right;
-
- }
-
+.navBar-style{
+    background-color: #1c1c1c!important;
+}
+.text-decorator-none{
+    text-decoration: none;
+}

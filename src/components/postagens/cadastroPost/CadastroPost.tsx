@@ -1,4 +1,4 @@
-import { Box, Button, Container, FormControl, FormHelperText, InputLabel, MenuItem, Select, TextField, Typography } from '@material-ui/core';
+import { Box, Button, Card, Container, FormControl, FormHelperText, InputLabel, MenuItem, Select, TextField, Typography } from '@material-ui/core';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
@@ -14,13 +14,13 @@ function CadastroPost() {
     let history = useHistory();
     const { id } = useParams<{ id: string }>();
     const [temas, setTemas] = useState<Tema[]>([])
-    const token = useSelector < UserState, UserState["tokens"]> (
+    const token = useSelector<UserState, UserState["tokens"]>(
         (state) => state.tokens
     );
 
     useEffect(() => {
         if (token === "") {
-            toast.error('Você precisa estar logado',{
+            toast.error('Você precisa estar logado', {
                 position: 'top-right',
                 autoClose: 2000,
                 hideProgressBar: false,
@@ -43,7 +43,7 @@ function CadastroPost() {
         id: 0,
         titulo: "",
         texto: "",
-        data:'',
+        data: '',
         tema: null
     })
 
@@ -95,7 +95,7 @@ function CadastroPost() {
                         "Authorization": token
                     }
                 })
-                toast.success('Postagem atualizada com sucesso!',{
+                toast.success('Postagem atualizada com sucesso!', {
                     position: 'top-right',
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -108,7 +108,7 @@ function CadastroPost() {
                 back()
             } catch (error) {
                 console.log(`Error: ${error}`)
-                toast.error('Erro ao atualizar postagem, por favor verifique os campos.',{
+                toast.error('Erro ao atualizar postagem, por favor verifique os campos.', {
                     position: 'top-right',
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -118,7 +118,7 @@ function CadastroPost() {
                     theme: 'dark',
                     progress: undefined
                 })
-    
+
             }
         } else {
             try {
@@ -127,7 +127,7 @@ function CadastroPost() {
                         "Authorization": token
                     }
                 })
-                toast.success('Postagem cadastrada com sucesso!',{
+                toast.success('Postagem cadastrada com sucesso!', {
                     position: 'top-right',
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -140,7 +140,7 @@ function CadastroPost() {
                 back()
             } catch (error) {
                 console.log(`Error: ${error}`)
-                toast.error('Erro ao cadastrar postagem, por favor verifique os campos.',{
+                toast.error('Erro ao cadastrar postagem, por favor verifique os campos.', {
                     position: 'top-right',
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -152,7 +152,7 @@ function CadastroPost() {
                 });
             }
         }
-        
+
     }
 
 
@@ -169,69 +169,84 @@ function CadastroPost() {
                 variant="h3"
                 color="textSecondary"
                 component="h1"
-                align="center" >
+                align="center"
+                className='titulo-cad-postagem' >
                 Cadastro de Postagem
             </Typography>
 
     } else {
         textoCadAtualiza =
-        <Typography
-            variant="h3"
-            color="textSecondary"
-            component="h1"
-            align="center" >
-            Atualização de Postagem
-        </Typography>
+            <Typography
+                variant="h3"
+                color="textSecondary"
+                component="h1"
+                align="center"
+                className='titulo-cad-postagem' >
+                Atualização de Postagem
+            </Typography>
     }
 
     return (
-        <Container maxWidth="sm" className="topo">
-            <form onSubmit={onSubmit}>
+        <Container maxWidth="sm" className="container">
+            <form onSubmit={onSubmit} >
                 <Box>
                     {textoCadAtualiza}
                 </Box>
+            
                 <TextField
                     value={postagem.titulo}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)}
                     id="titulo"
                     label="titulo"
-                    variant="outlined"
+                    variant="filled"
                     name="titulo"
                     margin="normal"
+                    className='textfiels-cad-postagem'
                     fullWidth />
-
+                
                 <TextField
                     value={postagem.texto}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)}
                     id="texto"
                     label="texto"
                     name="texto"
-                    variant="outlined"
+                    variant="filled"
                     margin="normal"
-                    rows={5}
+                    multiline
+                    minRows={5}
+                    className='textfiels-cad-postagem'
                     fullWidth />
 
                 <FormControl >
-                    <InputLabel id="demo-simple-select-helper-label">Tema </InputLabel>
+                    <Typography
+                        className='input-label'>
+                        Tema
+                    </Typography    >
                     <Select
+                        className='textfiels-cad-postagem'
                         labelId="demo-simple-select-helper-label"
                         id="demo-simple-select-helper"
                         onChange={(e) => buscaId(`/temas/${e.target.value}`, setTema, {
                             headers: {
                                 'Authorization': token
                             }
-                        })}>
+                        })}
+                        >
+
                         {
                             temas.map(tema => (
                                 <MenuItem value={tema.id}>{tema.descricao}</MenuItem>
                             ))
                         }
+
                     </Select>
-                    <FormHelperText>Escolha um tema para a postagem</FormHelperText>
-                    <Button type="submit" variant="contained" color="primary">
+                    <FormHelperText className='input-label'>Escolha um tema para a postagem</FormHelperText>
+                    <Button type="submit" className='btn-finalizar' >
                         Finalizar
                     </Button>
                 </FormControl>
+                
+                
             </form>
         </Container>
     )

@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
-import { Container, Typography, TextField, Button } from "@material-ui/core";
+import { Container, Typography, TextField, Button, Box } from "@material-ui/core";
 import { useHistory, useParams } from "react-router-dom";
 
 import Tema from "../../../models/Tema";
@@ -7,6 +7,7 @@ import { buscaId, post, put } from "../../../services/Service";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { UserState } from "../../../store/tokens/UserReducer";
+import './CadastroTema.css'
 
 function CadastroTema() {
 
@@ -133,33 +134,53 @@ function CadastroTema() {
         history.push('/temas')
     }
 
+    var textoCadAtualiza
+
+    if (id == undefined) {
+        textoCadAtualiza =
+            <Typography
+                variant="h3"
+                color="textSecondary"
+                component="h1"
+                align="center"
+                className='titulo-cad-tema' >
+                Cadastro de Tema
+            </Typography>
+
+    } else {
+        textoCadAtualiza =
+            <Typography
+                variant="h3"
+                color="textSecondary"
+                component="h1"
+                align="center"
+                className='titulo-cad-tema' >
+                Atualização de Tema
+            </Typography>
+    }
+
+
     return (
-        <Container maxWidth='sm' className="topo container-cad-postagens">
+        <Container maxWidth='sm' className="container">
             <form onSubmit={onSubmit}>
-                <Typography
-                    variant="h3"
-                    color="textSecondary"
-                    component="h1"
-                    align="center">
-                    Cadastro de Temas
-                </Typography>
+                <Box>
+                    {textoCadAtualiza}
+                </Box>
 
                 <TextField
                     value={tema.descricao}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => updatedTema(e)}
                     id="descricao"
                     label="descrição"
-                    variant="outlined"
                     name="descricao"
                     margin="normal"
+                    className="textfiels-cad-tema"
                     fullWidth
                 />
 
                 <Button
                     type="submit"
-                    variant="contained"
-                    color="primary"
-                    className='btn-cad-tema'>
+                    className='btn-finalizar'>
                     Finalizar
                 </Button>
 

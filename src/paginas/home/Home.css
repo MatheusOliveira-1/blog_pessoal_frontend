@@ -1,19 +1,15 @@
-.btn-logout{
-    border-top:solid 5px #FFaaFF!important;
-    border-right:solid 5px #FF00aa!important;
-    background-color: #FF00FF!important;
+.btns-left{
+    min-height: 6vh!important;
     border-radius: 10px!important; 
     color: #000000!important;
     font-weight: bold!important;
     text-decoration: none!important;
     margin-top: 5px!important;
     margin-bottom: 5px!important;
+    transition: 5s;
 }
 
-.btn-logout:hover{
-    border-top:solid 0px #ff0000!important;
-    border-right:solid 0px #ff0000!important;
-    background-color: #FF00FF!important;
+.btns-left:hover{
     border-top-left-radius: 10px!important;
     border-bottom-left-radius: 10px!important;  
     border-top-right-radius: 10px!important;
@@ -21,6 +17,18 @@
     color: #000000!important;
     font-weight: bold!important;
     text-decoration: none!important;
+}
+
+.btn-logout{
+    border-top:solid 5px #FFaaFF!important;
+    border-right:solid 5px #FF00aa!important;
+    background-color: #FF00FF!important;
+}
+
+.btn-logout:hover{
+    border-top:solid 0px #ff0000!important;
+    border-right:solid 0px #ff0000!important;
+    background-color: #FF00FF!important;
     
 }
 
@@ -28,66 +36,27 @@
     border-top:solid 5px #00FFAA!important;
     border-right:solid 5px #00bc09!important;
     background-color: #00FF71!important;
-    border-top-left-radius: 10px!important;
-    border-bottom-left-radius: 10px!important;  
-    border-top-right-radius: 10px!important;
-    border-bottom-right-radius: 10px!important; 
-    color: #000000!important;
-    font-weight: bold!important;
-    text-decoration: none!important;
-    margin-top: 5px!important;
-    margin-bottom: 5px!important;
 }
 
 .btn-ver-postagens:hover{
     border-top:solid 0px #00bc09!important;
     border-right:solid 0px #029e0a!important;
     background-color: #00FF71!important;
-    border-top-left-radius: 10px!important;
-    border-bottom-left-radius: 10px!important;  
-    border-top-right-radius: 10px!important;
-    border-bottom-right-radius: 10px!important; 
-    color: #000000!important;
-    font-weight: bold!important;
-    text-decoration: none!important;
-    
 }
+
 .btn-ver-temas{
     border-top:solid 5px #88ffff!important;
     border-right:solid 5px #00CCFF!important;
     background-color: #00FFFF!important;
-    border-top-left-radius: 10px!important;
-    border-bottom-left-radius: 10px!important;  
-    border-top-right-radius: 10px!important;
-    border-bottom-right-radius: 10px!important; 
-    color: #000000!important;
-    font-weight: bold!important;
-    text-decoration: none!important;
-    margin-top: 5px!important;
-    margin-bottom: 5px!important;
+   
 }
 
 .btn-ver-temas:hover{
     border-top:solid 0px #88ffff!important;
     border-right:solid 0px #00FFAA!important;
     background-color: #00FFFF!important;
-    border-top-left-radius: 10px!important;
-    border-bottom-left-radius: 10px!important;  
-    border-top-right-radius: 10px!important;
-    border-bottom-right-radius: 10px!important; 
-    color: #000000!important;
-    font-weight: bold!important;
-    text-decoration: none!important;
-    
 }
 
-.btns-direita{
-    min-height: 10vh!important;
-}
-
-.btns-esquerda{
-    min-height: 10vh!important;
-}
 
 .caixa{
     background-color: #000000 !important;

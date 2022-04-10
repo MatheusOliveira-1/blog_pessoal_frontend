@@ -119,7 +119,7 @@ function CadastroUsuario() {
                             onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
                             id='nome'
                             label='nome'
-                            variant='outlined'
+                            variant='filled'
                             name='nome'
                             margin="normal"
                             className="textfields-cadastro"
@@ -132,7 +132,7 @@ function CadastroUsuario() {
                             onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
                             id='usuario'
                             label='usuário'
-                            variant='outlined'
+                            variant='filled'
                             name='usuario'
                             margin='normal'
                             type='email'
@@ -146,7 +146,7 @@ function CadastroUsuario() {
                             onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
                             id='foto'
                             label='foto'
-                            variant='outlined'
+                            variant='filled'
                             name='foto'
                             margin="normal"
                             className="textfields-cadastro"
@@ -158,7 +158,7 @@ function CadastroUsuario() {
                             onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
                             id='senha'
                             label='senha'
-                            variant='outlined'
+                            variant='filled'
                             name='senha'
                             margin="normal"
                             type='password'
@@ -172,7 +172,7 @@ function CadastroUsuario() {
                             onChange={(e: ChangeEvent<HTMLInputElement>) => confirmarSenhaHandle(e)}
                             id='confirmarSenha'
                             label='Confirmar Senha'
-                            variant='outlined'
+                            variant='filled'
                             name='confirmarSenha'
                             margin='normal'
                             type='password'
