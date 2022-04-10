@@ -1,7 +1,3 @@
-.cursor{
-    cursor: pointer;
-}
-
 .btnModal{
     border-top:solid 5px #00FFaa!important;
     border-left:solid 5px #00bc09!important;
@@ -26,4 +22,7 @@
     color: #000000!important;
     font-weight: bold!important;
     text-decoration: none!important;
+}
+.cursor{
+    cursor: pointer;
 }

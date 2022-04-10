@@ -1,26 +1,26 @@
-import { ChangeEvent, useEffect, useState } from 'react'
-import { Container, Typography, TextField, Button, Select, InputLabel, MenuItem, FormControl, FormHelperText, Box } from "@material-ui/core"
-import './CadastroPost.css';
-import { useHistory, useParams } from 'react-router-dom';
-import Tema from '../../../models/Tema';
-import Postagem from '../../../models/Postagem';
-import { buscaId, post, put } from '../../../services/Service';
+import { Box, Button, Container, FormControl, FormHelperText, InputLabel, MenuItem, Select, TextField, Typography } from '@material-ui/core';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
+import { useHistory, useParams } from 'react-router-dom';
+import Postagem from '../../../models/Postagem';
+import Tema from '../../../models/Tema';
+import { busca, buscaId, post, put } from '../../../services/Service';
 import { UserState } from '../../../store/tokens/UserReducer';
+import './CadastroPost.css'
+import { toast } from 'react-toastify';
 
 function CadastroPost() {
 
     let history = useHistory();
-    const { id } = useParams<{ id: string }>()
-    const token = useSelector<UserState, UserState['tokens']>(
-        (state) => state.tokens
-    )
+    const { id } = useParams<{ id: string }>();
     const [temas, setTemas] = useState<Tema[]>([])
+    const token = useSelector < UserState, UserState["tokens"]> (
+        (state) => state.tokens
+    );
 
     useEffect(() => {
-        if (token == "") {
-            toast.error('Você precisa estar logado', {
+        if (token === "") {
+            toast.error('Você precisa estar logado',{
                 position: 'top-right',
                 autoClose: 2000,
                 hideProgressBar: false,
@@ -36,14 +36,14 @@ function CadastroPost() {
 
     const [tema, setTema] = useState<Tema>({
         id: 0,
-        descricao: ''
+        descricao: ""
     })
 
     const [postagem, setPostagem] = useState<Postagem>({
         id: 0,
-        titulo: '',
-        texto: '',
-        data: '',
+        titulo: "",
+        texto: "",
+        data:'',
         tema: null
     })
 
@@ -62,9 +62,9 @@ function CadastroPost() {
     }, [id])
 
     async function getTemas() {
-        await buscaId(`temas/`, setTemas, {
+        await busca("/temas", setTemas, {
             headers: {
-                'Authorization': token
+                "Authorization": token
             }
         })
     }
@@ -72,7 +72,7 @@ function CadastroPost() {
     async function findByIdPostagem(id: string) {
         await buscaId(`postagens/${id}`, setPostagem, {
             headers: {
-                'Authorization': token
+                "Authorization": token
             }
         })
     }
@@ -89,15 +89,13 @@ function CadastroPost() {
         e.preventDefault()
 
         if (id !== undefined) {
-
             try {
                 await put(`/postagens`, postagem, setPostagem, {
                     headers: {
-                        'Authorization': token
+                        "Authorization": token
                     }
                 })
-
-                toast.success('Postagem atualizada com sucesso!', {
+                toast.success('Postagem atualizada com sucesso!',{
                     position: 'top-right',
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -108,9 +106,9 @@ function CadastroPost() {
                     progress: undefined
                 })
                 back()
-
             } catch (error) {
-                toast.error('Erro ao atualizar postagem, por favor verifique os campos.', {
+                console.log(`Error: ${error}`)
+                toast.error('Erro ao atualizar postagem, por favor verifique os campos.',{
                     position: 'top-right',
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -120,19 +118,16 @@ function CadastroPost() {
                     theme: 'dark',
                     progress: undefined
                 })
-
+    
             }
-
         } else {
-
             try {
-                await post(`postagens`, postagem, setPostagem, {
+                await post(`/postagens`, postagem, setPostagem, {
                     headers: {
-                        'Authorization': token
+                        "Authorization": token
                     }
-
                 })
-                toast.success('Postagem cadastrada com sucesso!', {
+                toast.success('Postagem cadastrada com sucesso!',{
                     position: 'top-right',
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -143,10 +138,9 @@ function CadastroPost() {
                     progress: undefined
                 })
                 back()
-
-
             } catch (error) {
-                toast.error('Erro ao cadastrar postagem, por favor verifique os campos.', {
+                console.log(`Error: ${error}`)
+                toast.error('Erro ao cadastrar postagem, por favor verifique os campos.',{
                     position: 'top-right',
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -155,15 +149,16 @@ function CadastroPost() {
                     draggable: false,
                     theme: 'dark',
                     progress: undefined
-                })
+                });
             }
         }
-
+        
     }
 
+
     function back() {
-        history.push('/')
-        history.push('/postagens')
+        history.push("/")
+        history.push("/postagens")
     }
 
     var textoCadAtualiza
@@ -189,7 +184,6 @@ function CadastroPost() {
         </Typography>
     }
 
-
     return (
         <Container maxWidth="sm" className="topo">
             <form onSubmit={onSubmit}>
@@ -214,6 +208,7 @@ function CadastroPost() {
                     name="texto"
                     variant="outlined"
                     margin="normal"
+                    rows={5}
                     fullWidth />
 
                 <FormControl >

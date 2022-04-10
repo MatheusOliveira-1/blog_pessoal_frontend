@@ -88,8 +88,8 @@ function DeletarPostagem() {
 
   return (
     <>
-      <Box m={2}>
-        <Card variant="outlined" >
+      <Box m={2} className='caixa-cards'>
+        <Card variant="outlined" className='card-style'>
           <CardContent>
             <Box justifyContent="center">
               <Typography color="textSecondary" gutterBottom>
@@ -115,7 +115,7 @@ function DeletarPostagem() {
                 <Button
                   onClick={sim}
                   variant="contained"
-                  className="marginLeft"
+                  className="btn-sim-deletar-tema"
                   size='large'
                   color="primary">
                   Sim
@@ -127,7 +127,7 @@ function DeletarPostagem() {
                   onClick={nao}
                   variant="contained"
                   size='large'
-                  color="secondary">
+                  className="btn-nao-deletar-tema">
                   Não
                 </Button>
               </Box>

@@ -1,7 +1,6 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { Container, Typography, TextField, Button } from "@material-ui/core";
 import { useHistory, useParams } from "react-router-dom";
-import useLocalStorage from "react-use-localstorage";
 
 import Tema from "../../../models/Tema";
 import { buscaId, post, put } from "../../../services/Service";
@@ -85,7 +84,7 @@ function CadastroTema() {
                 back()
             } catch (error) {
                 console.log(error)
-                toast.success('Erro ao atualizar tema, por favor verifique os campos',{
+                toast.error('Erro ao atualizar tema, por favor verifique os campos',{
                     position: 'top-right',
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -115,7 +114,7 @@ function CadastroTema() {
                 })
                 back()
             } catch (error) {
-                toast.success('Erro ao cadastrar tema, por favor verifique os campos',{
+                toast.error('Erro ao cadastrar tema, por favor verifique os campos',{
                     position: 'top-right',
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -135,16 +134,14 @@ function CadastroTema() {
     }
 
     return (
-        <Container maxWidth='sm' className="topo">
+        <Container maxWidth='sm' className="topo container-cad-postagens">
             <form onSubmit={onSubmit}>
                 <Typography
                     variant="h3"
                     color="textSecondary"
                     component="h1"
                     align="center">
-
                     Cadastro de Temas
-
                 </Typography>
 
                 <TextField
@@ -161,7 +158,8 @@ function CadastroTema() {
                 <Button
                     type="submit"
                     variant="contained"
-                    color="primary">
+                    color="primary"
+                    className='btn-cad-tema'>
                     Finalizar
                 </Button>
 

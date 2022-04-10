@@ -77,7 +77,7 @@
 .container-lista-postagens{
     background-image: url(../../../assets/img/background-diverso-transparencia.svg);
     background-color: #000000;
-    background-size: 70vh;
+    min-height: calc(90vh - 180px);
 }
 
 .data-postagem{
