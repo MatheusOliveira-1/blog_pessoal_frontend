@@ -42,8 +42,10 @@ function Navbar() {
                     <Grid container direction="row" alignItems="center">
                         <Grid md={11}>
                             <Box className="caixa-nav">
-                                <Box mx={1} className="logo">
-                                </Box>
+                                <Link to='/home' className='text-decorator-none'>
+                                    <Box mx={1} className="logo">
+                                    </Box>
+                                </Link>
 
                                 <Link to='/home' className='text-decorator-none'>
                                     <Box mx={1} >

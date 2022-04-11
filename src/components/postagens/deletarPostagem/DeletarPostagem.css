@@ -8,6 +8,7 @@
     border-bottom-left-radius: 10px!important; 
     color: #000000!important;
     font-weight: bold!important;
+    margin-bottom: 10px!important;
     text-decoration: none!important;
     height: 6vh!important;
 }
@@ -34,7 +35,6 @@
     border-bottom-left-radius: 10px!important;  
     border-top-right-radius: 10px!important;
     border-bottom-right-radius: 10px!important; 
-    margin-left: 10px!important;
     color: #000000!important;
     font-weight: bold!important;
     text-decoration: none!important;
@@ -64,15 +64,17 @@
 .card-style{
     backdrop-filter: blur(6px);
     background-color: transparent!important;
-    width: 100%;
     border-left: solid 1px #00FFFF!important;
     border-bottom: solid 1px #00FFFF!important;
 }
 
-.container-lista-postagens{
+.container-deleta-postagens{
     background-image: url(../../../assets/img/background-diverso-transparencia.svg);
     background-color: #000000;
-    background-size: 70vh;
+    background-size: 70vh!important;
+    justify-content: center!important;
+    min-height: calc(100vh - 180px);
+    margin: 0px!important;
 }
 
 .data-postagem{
@@ -80,6 +82,15 @@
     font-weight: bold!important;
     text-align: right;
 }
+
+.glass-deleta-postagem{
+    backdrop-filter: blur(6px)!important;
+    width: 90vw!important;
+    background-color: transparent!important;
+    border-left: solid 1px #00FFFF!important;
+    border-bottom: solid 1px #00FFFF!important;
+}
+
 
 .MuiTypography-h4 {
     font-weight: bolder!important;
@@ -100,11 +111,6 @@
     font-size: large!important;
 }
 
-.titulo-lista-postagem{
-    margin-top: 20px;
-    text-align: center;
-    color: #00FFFF;
-}
 
 .titulo-postagem{
     color: #FF00FF;
@@ -112,4 +118,9 @@
 }
 
 
+.titulo-deleta-postagem{
+    margin-top: 20px;
+    text-align: center;
+    color: #00FFFF;
+}
 

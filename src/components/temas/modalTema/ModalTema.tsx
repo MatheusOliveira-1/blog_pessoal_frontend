@@ -5,7 +5,6 @@ import {Button,Box } from "@material-ui/core"
 import CloseIcon from '@material-ui/icons/Close';
 import './ModalTema.css';
 import CadastroTema from '../cadastroTema/CadastroTema';
-import fundo from '../../../assets/img/background-diverso-transparencia.svg'
 
 
 function getModalStyle() {
@@ -23,9 +22,8 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     paper: {
       position: 'absolute',
-      width: 400,
+      width: 600,
       backgroundColor: '#000000',
-      backgroundImage: `url(${fundo})`,
       borderRadius: '6px',
       backgroundSize: '100%',
       border: '2px solid #00ffff',

@@ -187,12 +187,12 @@ function CadastroPost() {
     }
 
     return (
-        <Container maxWidth="sm" className="container">
+        <Container maxWidth="sm" className="post-container">
             <form onSubmit={onSubmit} >
                 <Box>
                     {textoCadAtualiza}
                 </Box>
-            
+                <Box className='form-box'>
                 <TextField
                     value={postagem.titulo}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)}
@@ -245,7 +245,7 @@ function CadastroPost() {
                         Finalizar
                     </Button>
                 </FormControl>
-                
+                </Box>
                 
             </form>
         </Container>

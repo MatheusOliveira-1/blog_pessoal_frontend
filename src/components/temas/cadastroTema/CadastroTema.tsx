@@ -23,7 +23,7 @@ function CadastroTema() {
 
     useEffect(() => {
         if (token == "") {
-            toast.error('Você precisa estar logado',{
+            toast.error('Você precisa estar logado', {
                 position: 'top-right',
                 autoClose: 2000,
                 hideProgressBar: false,
@@ -55,7 +55,7 @@ function CadastroTema() {
         setTema({
             ...tema,
             [e.target.name]: e.target.value,
-            postagem:[{}]
+            postagem: [{}]
         })
 
     }
@@ -72,7 +72,7 @@ function CadastroTema() {
                     }
                 })
                 console.log("Retorno" + tema)
-                toast.success('Tema atualizado com sucesso!',{
+                toast.success('Tema atualizado com sucesso!', {
                     position: 'top-right',
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -85,7 +85,7 @@ function CadastroTema() {
                 back()
             } catch (error) {
                 console.log(error)
-                toast.error('Erro ao atualizar tema, por favor verifique os campos',{
+                toast.error('Erro ao atualizar tema, por favor verifique os campos', {
                     position: 'top-right',
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -103,7 +103,7 @@ function CadastroTema() {
                         'Authorization': token
                     }
                 })
-                toast.success('Tema cadastrado com sucesso!',{
+                toast.success('Tema cadastrado com sucesso!', {
                     position: 'top-right',
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -115,7 +115,7 @@ function CadastroTema() {
                 })
                 back()
             } catch (error) {
-                toast.error('Erro ao cadastrar tema, por favor verifique os campos',{
+                toast.error('Erro ao cadastrar tema, por favor verifique os campos', {
                     position: 'top-right',
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -161,29 +161,28 @@ function CadastroTema() {
 
 
     return (
-        <Container maxWidth='sm' className="container">
-            <form onSubmit={onSubmit}>
+        <Container maxWidth='sm' className="tema-container">
+            <form onSubmit={onSubmit} >
                 <Box>
                     {textoCadAtualiza}
                 </Box>
-
-                <TextField
-                    value={tema.descricao}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => updatedTema(e)}
-                    id="descricao"
-                    label="descrição"
-                    name="descricao"
-                    margin="normal"
-                    className="textfiels-cad-tema"
-                    fullWidth
-                />
-
+                <Box className="form-box">
+                    <TextField
+                        value={tema.descricao}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => updatedTema(e)}
+                        id="descricao"
+                        label="descrição"
+                        name="descricao"
+                        margin="normal"
+                        className="textfiels-cad-tema"
+                        fullWidth />
+                    
                 <Button
                     type="submit"
                     className='btn-finalizar'>
                     Finalizar
                 </Button>
-
+                </Box>
             </form>
         </Container>
     )

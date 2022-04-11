@@ -80,7 +80,7 @@ function ListaTema() {
                 <Box display="flex" justifyContent="center" mb={1.5}>
                   <Link to={`/formularioTema/${tema.id}`} className="text-decorator-none" >
                     <Box mx={1}>
-                      <Button variant="contained" className="btn-atualizar-tema" size='small' color="primary" >
+                      <Button className="btn-atualizar-tema" size='small' >
                         atualizar
                       </Button>
                     </Box>

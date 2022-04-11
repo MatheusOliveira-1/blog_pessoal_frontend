@@ -33,11 +33,17 @@
     margin: 1%!important;
 }
 
-.container{
-    width: 100%!important;
-    backdrop-filter: blur(6px);
-    background-color: transparent!important;
-}
+.post-container{
+    background-image: url(../../../assets/img/background-diverso-transparencia.svg);
+    background-color: #000000;
+    background-size: 70vh;
+    min-width: 100%;
+    min-height: calc(90vh - 195px);
+    display: flex!important;
+    align-items: center!important;
+    justify-content: center!important;
+    
+} 
 
 .textfiels-cad-postagem{
     color: #000000!important;
@@ -48,6 +54,12 @@
 .selector-label{
     color: #00FFFF!important;
 }
+
+.form-box{
+    width: 90%;
+    margin-left: 6%;
+}
+
 
 
 .input-label{

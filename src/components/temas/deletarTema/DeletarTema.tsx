@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Box, Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
+import { Box, Card, CardActions, CardContent, Button, Typography, Grid } from '@material-ui/core';
 import './DeletarTema.css';
 import { useHistory, useParams } from 'react-router-dom';
 import { buscaId, deleteId } from '../../../services/Service';
@@ -86,45 +86,49 @@ function DeletarTema() {
 
   return (
     <>
-      <Box m={2}>
-        <Card variant="outlined">
-          <CardContent>
-            <Box justifyContent="center">
-              <Typography color="textSecondary" gutterBottom>
-                {tema?.descricao}
-              </Typography>
-              <Typography color="textSecondary">
-                tema
-              </Typography>
-            </Box>
-          </CardContent>
-
-          <CardActions>
-            <Box display="flex" justifyContent="start" ml={1.0} mb={2} >
-              <Box mx={2}>
-                <Button
-                  onClick={sim}
-                  variant="contained"
-                  className="marginLeft"
-                  size='large'
-                  color="primary">
-                  Sim
-                </Button>
+      <Grid container direction='row' justifyContent='center' alignItems='center' className='container-deleta-postagens'>
+        <Grid xs={12}>
+          <Box>
+            <Typography className='titulo-deleta-tema' variant='h4' gutterBottom>
+              Deletar Tema
+            </Typography>
+            <Typography className='titulo-deleta-tema' variant='h5' gutterBottom>
+              Tem certeza que deseja deletar este tema?
+            </Typography>
+          </Box>
+        </Grid>
+        <Box m={12} className='caixa-cards'>
+          <Card variant="outlined" className='glass-deleta-tema'>
+            <CardContent>
+              <Box justifyContent="center">
+                <Typography className='titulo-tema' gutterBottom>
+                  {tema?.descricao}
+                </Typography>
               </Box>
+            </CardContent>
 
-              <Box mx={2}>
-                <Button
-                  onClick={nao}
-                  variant="contained"
-                  size='large'
-                  color="secondary">
-                  Não
-                </Button>
+            <CardActions >
+              <Box display="flex" justifyContent="center" width='100%'>
+                <Box  mx={2}>
+                  <Button
+                    onClick={sim}
+                    className="btn-sim-deletar-tema">
+                    Sim
+                  </Button>
+                </Box>
+
+                <Box mx={2}>
+                  <Button
+                    onClick={nao}
+                    className='btn-nao-deletar-tema'>
+                    Não
+                  </Button>
+                </Box>
               </Box>
-            </Box>
-          </CardActions>
-        </Card>
-      </Box>
+            </CardActions>
+          </Card>
+        </Box>
+      </Grid>
     </>
   );
 }
