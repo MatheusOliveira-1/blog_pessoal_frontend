@@ -47,13 +47,13 @@ function Navbar() {
                                     </Box>
                                 </Link>
 
-                                <Link to='/home' className='text-decorator-none'>
+                                {/* <Link to='/home' className='text-decorator-none'>
                                     <Box mx={1} >
                                         <Typography variant="h6" className="cursor-navbar">
                                             Home
                                         </Typography>
                                     </Box>
-                                </Link>
+                                </Link> */}
 
                                 <Link to='/postagens' className='text-decorator-none'>
                                     <Box mx={1}>
