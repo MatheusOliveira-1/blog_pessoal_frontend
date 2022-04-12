@@ -48,7 +48,7 @@ function ModalTema () {
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <Box display="flex" justifyContent="flex-end" className="cursor">
+      <Box display="flex" justifyContent="flex-end" className="close">
         <CloseIcon onClick={handleClose}/>
       
       </Box>
