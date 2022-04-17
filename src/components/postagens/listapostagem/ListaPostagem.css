@@ -83,6 +83,12 @@
     text-align: right;
 }
 
+.usuario-postagem{
+    color: #00FF71;
+    font-weight: bold!important;
+    
+}
+
 .MuiTypography-h4 {
     font-weight: bolder!important;
 }

@@ -11,12 +11,12 @@ import { toast } from 'react-toastify';
 import { UserState } from '../../../store/tokens/UserReducer';
 
 function ListaPostagem() {
+
   const [posts, setPosts] = useState<Postagem[]>([])
+
   const token = useSelector<UserState, UserState['tokens']>(
     (state) => state.tokens
   )
-
-  const [atualPage, setAtualPage] = useState(window.location.href.toString())
   
   let history = useHistory();
 
@@ -51,6 +51,8 @@ function ListaPostagem() {
 
   }, [posts.length])
 
+  console.log(posts)
+
   return (
     <>
       <Grid container direction='row' justifyContent='center' alignItems='center' className='container-lista-postagens'>
@@ -72,6 +74,9 @@ function ListaPostagem() {
             <Box m={12} className='caixa-cards'>
               <Card variant="outlined" className='glass-lista-postagem'>
                 <CardContent>
+                <Typography variant="h5" component="h3" className='usuario-postagem'>
+                    {post.usuario?.nome}
+                  </Typography>
                   <Typography variant="h5" component="h3" className='titulo-postagem'>
                     {post.titulo}
                   </Typography>

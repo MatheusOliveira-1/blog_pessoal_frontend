@@ -8,15 +8,22 @@ import { busca, buscaId, post, put } from '../../../services/Service';
 import { UserState } from '../../../store/tokens/UserReducer';
 import './CadastroPost.css'
 import { toast } from 'react-toastify';
+import User from '../../../models/User';
 
 function CadastroPost() {
 
     let history = useHistory();
     const { id } = useParams<{ id: string }>();
+
     const [temas, setTemas] = useState<Tema[]>([])
+
     const token = useSelector<UserState, UserState["tokens"]>(
         (state) => state.tokens
-    );
+    )
+
+    const userId = useSelector<UserState, UserState['id']>(
+        (state) => state.id
+    )
 
     useEffect(() => {
         if (token === "") {
@@ -44,7 +51,16 @@ function CadastroPost() {
         titulo: "",
         texto: "",
         data: '',
-        tema: null
+        tema: null,
+        usuario: null
+    })
+
+    const [user, setUser] = useState<User>({
+        id: +userId,
+        nome: '',
+        usuario:'',
+        senha:'',
+        foto:''
     })
 
     useEffect(() => {
@@ -78,10 +94,14 @@ function CadastroPost() {
     }
 
     function updatedPostagem(e: ChangeEvent<HTMLInputElement>) {
+        console.log(postagem)
         setPostagem({
             ...postagem,
             [e.target.name]: e.target.value,
-            tema: tema
+            tema: tema,
+            usuario: user
+
+            
         })
     }
 
